@@ -5,6 +5,16 @@ const address = document.querySelector(".contact-address");
 const phone = document.querySelector(".contact-phone");
 const message = document.querySelector(".contact-message");
 const contactSubmit = document.querySelector(".contact-submit");
+const requestStatus = document.querySelector(".request-status");
+console.log("start contact Page");
+
+console.log(firstName);
+console.log(lastName);
+console.log(email);
+console.log(address);
+console.log(phone);
+console.log(message);
+console.log(contactSubmit);
 
 const clearInput = () => {
   firstName.value = "";
@@ -17,6 +27,7 @@ const clearInput = () => {
 
 contactSubmit.addEventListener("click", async (ev) => {
   ev.preventDefault();
+  console.log(ev);
   const formData = new FormData();
   formData.append("firstName", firstName.value);
   formData.append("lastName", lastName.value);
@@ -25,11 +36,20 @@ contactSubmit.addEventListener("click", async (ev) => {
   formData.append("phone", phone.value);
   formData.append("message", message.value);
 
-  const result = await fetch("http://localhost:4000/add-contact", {
+  const response = await fetch("http://localhost:4000/add-contact", {
     method: "POST",
     body: formData,
   });
-  const response = await result.json();
+  const result = await response.json();
+  console.log(result);
+  if (response.status === 200 || response.status === 201) {
+    requestStatus.classList.remove("err");
+    requestStatus.classList.add("success");
+    requestStatus.textContent = result.message;
+  } else {
+    requestStatus.classList.remove("success");
+    requestStatus.classList.add("err");
+    requestStatus.textContent = result.message;
+  }
   clearInput();
-  location.reload();
 });

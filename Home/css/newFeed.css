@@ -1,0 +1,47 @@
+.feed-form {
+  width: 50%;
+  padding: 10px 15px;
+  border-radius: 10px;
+  margin: 0 auto !important;
+  background-color: #ddd;
+}
+
+.form-input {
+  background-color: #fff;
+  margin-bottom: 15px;
+}
+
+.form-button {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+textarea.form-input {
+  resize: none;
+  height: 100px;
+}
+
+.request-status {
+  width: 50% !important;
+  margin: 10px auto;
+  padding: 5px;
+  display: flex;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 500;
+  justify-content: center;
+  display: none;
+}
+
+.request-status.success {
+  display: flex;
+  background-color: #00c900c2;
+  color: white;
+}
+
+.request-status.err {
+  display: flex;
+  background-color: rgb(255 51 51 / 49%);
+  color: red;
+}

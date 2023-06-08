@@ -7,11 +7,6 @@
     text-rendering: optimizeLegibility;
     -moz-osx-font-smoothing: grayscale;
 }
-input, textarea{
-    font-size: 18px !important;
-    font-size: 500 !important;
-    color: #333 !important
-}
 
 html, body {
     height: 100%;

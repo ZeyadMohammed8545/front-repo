@@ -1,0 +1,19 @@
+.event-container {
+  display: flex;
+  justify-content: space-between;
+}
+.img-holder {
+  width: 30%;
+}
+.event-image {
+  width: 100%;
+}
+
+.info-holder {
+  width: 60%;
+}
+
+.event-title {
+  font-size: 18px;
+  font-weight: 500;
+}

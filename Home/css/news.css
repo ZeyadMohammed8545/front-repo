@@ -1,0 +1,15 @@
+.blog-items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.single-blog-item {
+  width: 48%;
+}
+
+@media (max-width: 767px) {
+  .single-blog-item {
+    width: 100%;
+  }
+}
