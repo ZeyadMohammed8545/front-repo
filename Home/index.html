@@ -13,6 +13,26 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;500&display=swap" rel="stylesheet" />
     <title>Muslim house</title>
+    <script>
+        //protecting user Special Routes
+        // const userData = JSON.parse(window.localStorage.getItem("loginUserToken"))
+        // if (userData) {
+        //     const { token } = userData
+        //     const authResponse = fetch("http://localhost:4000/verify-user", {
+        //         method: "GET",
+        //         headers: {
+        //             "Authorized": `Bearer ${token}`
+        //         }
+        //     }).then((response) => {
+        //         return response.json();
+        //     }).then((finalRes) => {
+        //         console.log(finalRes);
+        //     })
+        // } else {
+        //     console.log("redirecting to Login")
+        // }
+
+    </script>
 </head>
 
 <body>
@@ -21,15 +41,15 @@
             <a class="navbar-brand" href="#"><img src="images/logo.png" alt=""></a>
             <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#main"
                 aria-controls="main" aria-expanded="false" aria-label="Toggle navigation">
-                 <i class="fa-solid fa-bars"></i>
+                <i class="fa-solid fa-bars"></i>
             </button>
             <div class="collapse navbar-collapse" id="main">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <li class="nav-item">
                         <a class="p-lg-3 p-2 nav-link active" aria-current="page" href="index.html">Home</a>
                     </li>
-                
-                
+
+
                     <li class="nav-item">
                         <a class="p-lg-3 p-2 nav-link" href="#">About</a>
                     </li>
@@ -45,32 +65,32 @@
                     <li class="nav-item">
                         <a class="p-lg-3 p-2 nav-link" href="Feedback.html">Feedback</a>
                     </li>
-                </ul>           
+                </ul>
             </div>
         </div>
     </nav>
 
     <div id="carouselExample" class="carousel slide">
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img src="images/bg-about.jpg" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="images/blog-2.jpg" class="d-block w-100" alt="...">
-          </div>
-          <div class="carousel-item">
-            <img src="images/blog-3.jpg" class="d-block w-100" alt="...">
-          </div>
+            <div class="carousel-item active">
+                <img src="images/bg-about.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="images/blog-2.jpg" class="d-block w-100" alt="...">
+            </div>
+            <div class="carousel-item">
+                <img src="images/blog-3.jpg" class="d-block w-100" alt="...">
+            </div>
         </div>
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
         </button>
         <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
         </button>
-      </div>
+    </div>
     <!-- <div class="landing d-flex justify-content-center align-items-center">
         <div class="text-center text-light ">
             <h1 class="mb-3">Taste the Creativity</h1>
@@ -318,119 +338,125 @@
                     <div class="card">
                         <img src="images/blog-1.jpg" class="card-img-top" alt="Blog Post">
                         <div class="card-body">
-                          <span class="text-black-50">Jan 17, 2022</span>
-                          <h5 class="card-title">Some Awesome Blog Title Here</h5>
+                            <span class="text-black-50">Jan 17, 2022</span>
+                            <h5 class="card-title">Some Awesome Blog Title Here</h5>
                         </div>
-                      </div>
+                    </div>
 
                 </div>
                 <div class="col-md-6 col-lg-4 ">
                     <div class="card">
                         <img src="images/blog-2.jpg" class="card-img-top" alt="Blog Post">
                         <div class="card-body">
-                          <span class="text-black-50">Jan 17, 2022</span>
-                          <h5 class="card-title">Some Awesome Blog Title Here</h5>
+                            <span class="text-black-50">Jan 17, 2022</span>
+                            <h5 class="card-title">Some Awesome Blog Title Here</h5>
                         </div>
-                      </div>
+                    </div>
 
                 </div>
                 <div class="col-md-6 col-lg-4 ">
                     <div class="card">
                         <img src="images/blog-3.jpg" class="card-img-top" alt="Blog Post">
                         <div class="card-body">
-                          <span class="text-black-50">Jan 17, 2022</span>
-                          <h5 class="card-title">Some Awesome Blog Title Here</h5>
+                            <span class="text-black-50">Jan 17, 2022</span>
+                            <h5 class="card-title">Some Awesome Blog Title Here</h5>
                         </div>
-                      </div>
+                    </div>
 
                 </div>
             </div>
             <div class="blog-btn d-flex justify-content-center align-items-center pt-5">
-               <a href="#" class="btn main-btn rounded-pill ">More Stories</a>  
+                <a href="#" class="btn main-btn rounded-pill ">More Stories</a>
             </div>
-           
+
         </div>
     </div>
     <div class="subscribe pt-5 pb-5 text-center text-md-start">
         <div class="container">
-          <form class="row align-items-center">
-            <div class="col-md-6 col-lg-3">
-              <div class="fw-bold fs-5 mb-3">Subscribe to our Newsletter:</div>
-            </div>
-            <div class="col-md-6 col-lg-7 mb-3">
-              <input class="w-100 text-light p-2 bg-transparent" type="text" placeholder="Enter Email Address">
-            </div>
-            <div class="col-md-6 col-lg-2">
-              <input class="btn rounded-pill" type="submit" value="Subscribe">
-            </div>
-          </form>
-        </div>
-      </div>
-      <div class="footer pt-5 pb-5 text-white-50 text-center text-md-start">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-6 col-lg-4">
-              <div class="info mb-5">
-                <img src="imgs/logo.png" alt="" class="mb-4">
-                <p class="mb-5">
-                  Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo, lacinia eget consectetur sed,
-                  convallis at tellus.
-                </p>
-                <div class="copyright">
-                  Created By <span>Graphberry</span>
-                  <div>© 2022 - <span>Bondi Inc</span></div>
+            <form class="row align-items-center">
+                <div class="col-md-6 col-lg-3">
+                    <div class="fw-bold fs-5 mb-3">Subscribe to our Newsletter:</div>
                 </div>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-2">
-              <div class="links">
-                <h5 class="text-light">Links</h5>
-                <ul class="list-unstyled lh-lg">
-                  <li>Home</li>
-                  <li>Our Services</li>
-                  <li>Portfolio</li>
-                  <li>Testimonials</li>
-                  <li>Support</li>
-                  <li>Terms and Condition</li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-2">
-              <div class="links">
-                <h5 class="text-light">About Us</h5>
-                <ul class="list-unstyled lh-lg">
-                  <li>Sign In</li>
-                  <li>Register</li>
-                  <li>About Us</li>
-                  <li>Blog</li>
-                  <li>Contact Us</li>
-                </ul>
-              </div>
-            </div>
-            <div class="col-md-6 col-lg-4">
-              <div class="contact">
-                <h5 class="text-light">Contact Us</h5>
-                <p class="lh-lg mt-3 mb-5">Get in touch with us via mail phone.We are waiting for your call or message</p>
-                <a class="btn rounded-pill main-btn w-100" href="#">graphberry@gmail.com</a>
-                <ul class="d-flex mt-5 list-unstyled gap-3">
-                  <li>
-                    <a class="d-block text-light" href="#"> <i class="fa-brands fa-facebook fa-lg facebook rounded-circle p-2"></i></a>
-                  </li>
-                  <li>
-                    <a class="d-block text-light" href="#"> <i class="fa-brands fa-twitter fa-lg twitter rounded-circle p-2"></i></a>
-                  </li>
-                  <li>
-                    <a class="d-block text-light" href="#"> <i class="fa-brands fa-linkedin fa-lg linkedin rounded-circle p-2"></i></a>
-                  </li>
-                  <li>
-                    <a class="d-block text-light" href="#"> <i class="fa-brands fa-youtube fa-lg youtube rounded-circle p-2"></i> </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
+                <div class="col-md-6 col-lg-7 mb-3">
+                    <input class="w-100 text-light p-2 bg-transparent" type="text" placeholder="Enter Email Address">
+                </div>
+                <div class="col-md-6 col-lg-2">
+                    <input class="btn rounded-pill" type="submit" value="Subscribe">
+                </div>
+            </form>
         </div>
-      </div>
+    </div>
+    <div class="footer pt-5 pb-5 text-white-50 text-center text-md-start">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-lg-4">
+                    <div class="info mb-5">
+                        <img src="imgs/logo.png" alt="" class="mb-4">
+                        <p class="mb-5">
+                            Pellentesque in ipsum id orci porta dapibus. Vivamus magna justo, lacinia eget consectetur
+                            sed,
+                            convallis at tellus.
+                        </p>
+                        <div class="copyright">
+                            Created By <span>Graphberry</span>
+                            <div>© 2022 - <span>Bondi Inc</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-2">
+                    <div class="links">
+                        <h5 class="text-light">Links</h5>
+                        <ul class="list-unstyled lh-lg">
+                            <li>Home</li>
+                            <li>Our Services</li>
+                            <li>Portfolio</li>
+                            <li>Testimonials</li>
+                            <li>Support</li>
+                            <li>Terms and Condition</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-2">
+                    <div class="links">
+                        <h5 class="text-light">About Us</h5>
+                        <ul class="list-unstyled lh-lg">
+                            <li>Sign In</li>
+                            <li>Register</li>
+                            <li>About Us</li>
+                            <li>Blog</li>
+                            <li>Contact Us</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="contact">
+                        <h5 class="text-light">Contact Us</h5>
+                        <p class="lh-lg mt-3 mb-5">Get in touch with us via mail phone.We are waiting for your call or
+                            message</p>
+                        <a class="btn rounded-pill main-btn w-100" href="#">graphberry@gmail.com</a>
+                        <ul class="d-flex mt-5 list-unstyled gap-3">
+                            <li>
+                                <a class="d-block text-light" href="#"> <i
+                                        class="fa-brands fa-facebook fa-lg facebook rounded-circle p-2"></i></a>
+                            </li>
+                            <li>
+                                <a class="d-block text-light" href="#"> <i
+                                        class="fa-brands fa-twitter fa-lg twitter rounded-circle p-2"></i></a>
+                            </li>
+                            <li>
+                                <a class="d-block text-light" href="#"> <i
+                                        class="fa-brands fa-linkedin fa-lg linkedin rounded-circle p-2"></i></a>
+                            </li>
+                            <li>
+                                <a class="d-block text-light" href="#"> <i
+                                        class="fa-brands fa-youtube fa-lg youtube rounded-circle p-2"></i> </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <script src="js/bootstrap.bundle.min.js"></script>

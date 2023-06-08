@@ -1,5 +1,11 @@
 const feedContainer = document.querySelector(".feeds-container");
 
+const { name, userImage } = userData;
+const adminName = document.querySelector(".icons h5");
+const adminImage = document.querySelector(".icons img");
+adminName.textContent = name;
+adminImage.src = `http://localhost:4000/${userImage}`;
+
 const DateHandler = (dateStr) => {
   const date = new Date(dateStr);
   let day = date.getDate();
@@ -79,3 +85,8 @@ const deleteClickHandler = async (id) => {
   const response = await result.json();
   location.reload();
 };
+
+document.querySelector(".sign-out").addEventListener("click", () => {
+  window.localStorage.removeItem("loginUserToken");
+  window.location.href = "../Auth/Form.html";
+});

@@ -1,43 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/Form.css" />
-    <title>Forget Password</title>
-  </head>
-  <body>
-    <script>
-      fetch("http://localhost:4000/verify")
-        .then((res) => {
-          return res.json();
-        })
-        .then((result) => {
-          if (result.status == false) {
-            window.location.href = "/Form.html";
-          }
-        });
-    </script>
-    <div class="err-container">
-      <p class="err-text"></p>
-    </div>
 
-    <div class="container right-panel-active">
-      <!-- Sign Up -->
-      <div class="container__form container--forget">
-        <form action="/sign-up" method="post" class="form" id="form1">
-          <h2 class="form__title">Search By Email.</h2>
-          <input
-            type="text"
-            placeholder="Email Address"
-            class="input reset-email"
-          />
-          <button class="btn serach-submit" type="submit">Search</button>
-          <a href="/Form.html" class="login-page-link">login?</a>
-        </form>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/Form.css" />
+  <link rel="stylesheet" href="css/reset.css">
+  <title>Forget Password</title>
+</head>
+
+<body>
+  <div class="container right-panel-active">
+    <!-- Sign Up -->
+    <div class="container__form container--forget">
+      <form action="/sign-up" method="post" class="form" id="form1">
+        <h2 class="form__title">Search By Email.</h2>
+        <h2 class="feed-status">some text</h2>
+        <input type="text" placeholder="Email Address" class="input reset-email" />
+        <button class="btn serach-submit" type="submit">Search</button>
+        <a href="./Form.html" class="login-page-link">login?</a>
+      </form>
     </div>
-    <script src="js/resetPass.js"></script>
-  </body>
+  </div>
+  <script src="js/resetPass.js"></script>
+</body>
+
 </html>

@@ -9,11 +9,18 @@ const adminSubmit = document.querySelector(".admin-submit");
 const adminReset = document.querySelector(".admin-reset");
 const adminCardContainer = document.querySelector(".admin-cards-container");
 const formImage = document.querySelector(".formImg img");
+
 let hiddenImgPath = "";
 let hiddenPass = "";
 let adminId = "";
 //fetch All Admins
 let mode = "add";
+
+const { name, userImage } = userData;
+const adminName = document.querySelector(".icons h5");
+const adminImage = document.querySelector(".icons img");
+adminName.textContent = name;
+adminImage.src = `http://localhost:4000/${userImage}`;
 
 const clearInput = () => {
   mode = "add";
@@ -56,39 +63,33 @@ fetch("http://localhost:4000/get-admins")
                     </span>
                   </h5>
                   <hr />
-                  <button class="btn btn-primary" onClick = "updateHandler(${admin.id})">Edit</button>
-                  <button class="btn btn-danger" onClick = "deleteHandler(${admin.id})">Delete</button>
+                 
                 </div>
               </div>
             </div>`;
     });
   });
 
-const deleteHandler = async (id) => {
-  const response = await fetch(
-    `http://localhost:4000/delete-admin/${id}`,
-    {
-      method: "DELETE",
-    }
-  );
-  location.reload();
-};
+// const deleteHandler = async (id) => {
+//   const response = await fetch(`http://localhost:4000/delete-admin/${id}`, {
+//     method: "DELETE",
+//   });
+//   location.reload();
+// };
 
-const updateHandler = async (id) => {
-  mode = "edit";
-  const response = await fetch(
-    `http://localhost:4000/get-admin-edit/${id}`
-  );
-  const result = await response.json();
-  userNameInput.value = result.admin.name;
-  emailInput.value = result.admin.email;
-  phoneInput.value = result.admin.phone;
-  addressInput.value = result.admin.address;
-  adminId = result.admin._id;
-  hiddenImgPath = result.admin.imgPath;
-  hiddenPass = result.admin.password;
-  formImage.src = `http://localhost:4000/${result.admin.imgPath}`;
-};
+// const updateHandler = async (id) => {
+//   mode = "edit";
+//   const response = await fetch(`http://localhost:4000/get-admin-edit/${id}`);
+//   const result = await response.json();
+//   userNameInput.value = result.admin.name;
+//   emailInput.value = result.admin.email;
+//   phoneInput.value = result.admin.phone;
+//   addressInput.value = result.admin.address;
+//   adminId = result.admin._id;
+//   hiddenImgPath = result.admin.imgPath;
+//   hiddenPass = result.admin.password;
+//   formImage.src = `http://localhost:4000/${result.admin.imgPath}`;
+// };
 
 adminSubmit.addEventListener("click", async (ev) => {
   ev.preventDefault();
@@ -114,13 +115,10 @@ adminSubmit.addEventListener("click", async (ev) => {
   }
 
   if (mode == "add") {
-    const response = await fetch(
-      "http://localhost:4000/add-admin",
-      {
-        method: "POST",
-        body: formData,
-      }
-    );
+    const response = await fetch("http://localhost:4000/add-admin", {
+      method: "POST",
+      body: formData,
+    });
     const result = await response.json();
     location.reload();
   } else if (mode == "edit") {
@@ -134,4 +132,10 @@ adminSubmit.addEventListener("click", async (ev) => {
     const result = await response.json();
     location.reload();
   }
+});
+
+
+document.querySelector(".sign-out").addEventListener("click", () => {
+  window.localStorage.removeItem("loginUserToken");
+  window.location.href = "../Auth/Form.html";
 });

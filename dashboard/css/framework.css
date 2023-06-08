@@ -240,8 +240,16 @@
   align-items: center;
   justify-content: space-between;
 }
+.flex-end {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
 .btn-shape {
   padding: 4px 10px;
   border-radius: 6px;
+}
+.head {
+  height: 80px;
 }
 /* End Components */

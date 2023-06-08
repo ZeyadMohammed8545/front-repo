@@ -1,4 +1,10 @@
 const usersContainer = document.querySelector(".users-container");
+const { name, userImage } = userData;
+const adminName = document.querySelector(".icons h5");
+const adminImage = document.querySelector(".icons img");
+adminName.textContent = name;
+adminImage.src = `http://localhost:4000/${userImage}`;
+
 console.log(usersContainer);
 fetch("http://localhost:4000/get-users")
   .then((users) => {
@@ -7,7 +13,7 @@ fetch("http://localhost:4000/get-users")
   .then((data) => {
     // console.log(data.users);
     data.users.forEach((user) => {
-      usersContainer.innerHTML += ` <div class="overview bg-white rad-10 d-flex align-center user-card">
+      usersContainer.innerHTML += ` <div class="overview bg-white rad-10 d-flex align-center user-card mb-2">
             <div class="avatar-box txt-c p-20">
               <img class="rad-half mb-10" src="${
                 user.imgPath
@@ -43,8 +49,8 @@ fetch("http://localhost:4000/get-users")
                   <span>${user.phone}</span>
                 </div>
                 <div class="fs-14">
-                  <span class="c-grey">Date Of Birth:</span>
-                  <span>25/10/1982</span>
+                  <span class="c-grey">Addrress:</span>
+                  <span>${user.address}</span>
                 </div>
               </div>
               <!-- End Information Row -->
@@ -63,13 +69,16 @@ fetch("http://localhost:4000/get-users")
 
 const userDeleteHandler = async (id) => {
   //   console.log(id);
-  const response = await fetch(
-    `http://localhost:4000/delete-user/${id}`,
-    {
-      method: "DELETE",
-    }
-  );
+  const response = await fetch(`http://localhost:4000/delete-user/${id}`, {
+    method: "DELETE",
+  });
   const result = await response.json();
   location.reload();
   console.log(result);
 };
+
+
+document.querySelector(".sign-out").addEventListener("click", () => {
+  window.localStorage.removeItem("loginUserToken");
+  window.location.href = "../Auth/Form.html";
+});

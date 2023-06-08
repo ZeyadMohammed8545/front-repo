@@ -6,6 +6,11 @@ const descriptionInput = document.querySelector(".program-description");
 const cardsParent = document.querySelector(".cards-parent");
 const formImage = document.querySelector(".form-image");
 const resetBtn = document.querySelector(".reset-btn");
+const { name, userImage } = userData;
+const adminName = document.querySelector(".icons h5");
+const adminImage = document.querySelector(".icons img");
+adminName.textContent = name;
+adminImage.src = `http://localhost:4000/${userImage}`;
 
 resetBtn.addEventListener("click", (ev) => {
   mode = "add";
@@ -55,12 +60,9 @@ fetch("http://localhost:4000/programs")
   });
 
 function deleteHandler(id) {
-  fetch(
-    `http://localhost:4000/delete-program/${id}`,
-    {
-      method: "DELETE",
-    }
-  )
+  fetch(`http://localhost:4000/delete-program/${id}`, {
+    method: "DELETE",
+  })
     .then((res) => {
       return res.json();
     })
@@ -75,9 +77,7 @@ function deleteHandler(id) {
 
 function editHandler(prod_id) {
   mode = "edit";
-  fetch(
-    `http://localhost:4000/edit-program/${prod_id}`
-  )
+  fetch(`http://localhost:4000/edit-program/${prod_id}`)
     .then((program) => {
       return program.json();
     })
@@ -119,13 +119,10 @@ submitForm.addEventListener("submit", (ev) => {
       });
   } else if (mode == "edit") {
     const program_id = document.querySelector(".hidden_id").value;
-    fetch(
-      `http://localhost:4000/edit-program/${program_id}`,
-      {
-        method: "PUT",
-        body: formData,
-      }
-    )
+    fetch(`http://localhost:4000/edit-program/${program_id}`, {
+      method: "PUT",
+      body: formData,
+    })
       .then((result) => {
         console.log(result);
       })
@@ -136,4 +133,9 @@ submitForm.addEventListener("submit", (ev) => {
         console.log(err);
       });
   }
+});
+
+document.querySelector(".sign-out").addEventListener("click", () => {
+  window.localStorage.removeItem("loginUserToken");
+  window.location.href = "../Auth/Form.html";
 });

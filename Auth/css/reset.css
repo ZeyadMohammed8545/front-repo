@@ -1,0 +1,22 @@
+.login-page {
+  text-decoration: none !important;
+}
+.feed-status {
+  width: 100%;
+  font-size: 18px;
+  font-weight: 500;
+  padding: 5px;
+  border-radius: 10px;
+  display: none;
+}
+.feed-status.success {
+  display: block;
+  background-color: #00c900c2;
+  color: white;
+}
+
+.feed-status.err {
+  display: block;
+  background-color: rgb(255 51 51 / 49%);
+  color: red;
+}

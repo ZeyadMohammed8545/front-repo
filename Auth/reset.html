@@ -1,31 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/Form.css" />
-    <title>Site Login</title>
-  </head>
-  <body>
-    <div class="err-container">
-      <p class="err-text"></p>
-    </div>
 
-    <div class="container right-panel-active">
-      <!-- Sign Up -->
-      <div class="container__form container--reset">
-        <form action="/sign-up" method="post" class="form" id="form1">
-          <h2 class="form__title">Reset Password</h2>
-          <input
-            type="password"
-            placeholder="Password"
-            class="input resetPassword"
-          />
-          <button class="btn reset-pass-submit" type="submit">Reset Now</button>
-        </form>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="css/Form.css" />
+  <link rel="stylesheet" href="css/reset.css">
+  <title>Site Login</title>
+</head>
+
+<body>
+
+  <div class="container right-panel-active">
+    <!-- Sign Up -->
+    <div class="container__form container--reset">
+      <form action="/sign-up" method="post" class="form" id="form1">
+        <h2 class="form__title">Reset Password</h2>
+        <h2 class="feed-status ">some-text</h2>
+        <input type="password" placeholder="Password" class="input resetPassword" />
+        <button class="btn reset-pass-submit" type="submit">Reset Now</button>
+        <a href="./Form.html" class="btn btn-primary login-page ">To Login Page</a>
+      </form>
     </div>
-    <script src="js/resetHandler.js"></script>
-  </body>
+  </div>
+  <script src="js/resetHandler.js"></script>
+</body>
+
 </html>

@@ -1,81 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/Form.css" />
-    <title>Site Login</title>
-  </head>
-  <body>
-    <div class="err-container">
-      <p class="err-text"></p>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="./css/Form.css" />
+  <link rel="stylesheet" href="css/reset.css">
+  <title>Site Login</title>
+</head>
+
+<body>
+
+  <div class="container right-panel-active">
+    <!-- Sign Up -->
+    <div class="container__form container--signup">
+      <form action="/sign-up" method="post" class="form" id="form1">
+        <h2 class="form__title">Sign Up</h2>
+        <h2 class="feed-status signup-status">some success or err Text</h2>
+        <input type="text" placeholder="User" class="input signUpName" />
+        <input type="email" placeholder="Email" class="input signUpEmail" />
+        <input type="Test" placeholder="Address" class="input signUpAddress" />
+        <input type="number" placeholder="PhoneNumber" class="input signUpNumber" />
+        <input type="password" placeholder="Password" class="input signUpPassword" />
+        <input type="password" placeholder="Confirm Password" class="input signUpConfPassword" />
+        <button class="btn sign-up-submit" type="submit">Sign Up</button>
+      </form>
     </div>
 
-    <div class="container right-panel-active">
-      <!-- Sign Up -->
-      <div class="container__form container--signup">
-        <form action="/sign-up" method="post" class="form" id="form1">
-          <h2 class="form__title">Sign Up</h2>
-          <input type="text" placeholder="User" class="input signUpName" />
-          <input type="email" placeholder="Email" class="input signUpEmail" />
-          <input
-            type="Test"
-            placeholder="Address"
-            class="input signUpAddress"
-          />
-          <input
-            type="number"
-            placeholder="PhoneNumber"
-            class="input signUpNumber"
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            class="input signUpPassword"
-          />
-          <input
-            type="password"
-            placeholder="Confirm Password"
-            class="input signUpConfPassword"
-          />
-          <button class="btn sign-up-submit" type="submit">Sign Up</button>
-        </form>
-      </div>
+    <!-- Sign In -->
+    <div class="container__form container--signin">
+      <form action="/sign-in" method="post" class="form" id="form2">
+        <h2 class="form__title">Sign In</h2>
+        <h2 class="feed-status login-status">Some error Text</h2>
+        <input type="email" placeholder="Email" class="input loginEmail" name="loginEmail" />
+        <input type="password" placeholder="Password" class="input loginPass" name="loginPass" />
+        <a href="./forget.html" class="link">Forgot your password?</a>
+        <button class="btn sign-in-submit" type="submit">Login</button>
+      </form>
+    </div>
 
-      <!-- Sign In -->
-      <div class="container__form container--signin">
-        <form action="/sign-in" method="post" class="form" id="form2">
-          <h2 class="form__title">Sign In</h2>
-          <input
-            type="email"
-            placeholder="Email"
-            class="input loginEmail"
-            name="loginEmail"
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            class="input loginPass"
-            name="loginPass"
-          />
-          <a href="/forget.html" class="link">Forgot your password?</a>
-          <button class="btn sign-in-submit" type="submit">Login</button>
-        </form>
-      </div>
-
-      <!-- Overlay -->
-      <div class="container__overlay">
-        <div class="overlay">
-          <div class="overlay__panel overlay--left">
-            <button class="btn" id="signIn">Login</button>
-          </div>
-          <div class="overlay__panel overlay--right">
-            <button class="btn" id="signUp">Sign Up</button>
-          </div>
+    <!-- Overlay -->
+    <div class="container__overlay">
+      <div class="overlay">
+        <div class="overlay__panel overlay--left">
+          <button class="btn" id="signIn">Login</button>
+        </div>
+        <div class="overlay__panel overlay--right">
+          <button class="btn" id="signUp">Sign Up</button>
         </div>
       </div>
     </div>
-    <script src="js/Form.js"></script>
-  </body>
+  </div>
+  <script src="js/Form.js"></script>
+</body>
+
 </html>

@@ -10,6 +10,12 @@ const formImage = document.querySelector(".form-img");
 let mode = "add";
 let NewsId;
 
+const { name, userImage } = userData;
+const adminName = document.querySelector(".icons h5");
+const adminImage = document.querySelector(".icons img");
+adminName.textContent = name;
+adminImage.src = `http://localhost:4000/${userImage}`;
+
 const clearInput = () => {
   newsTitleInput.value = "";
   newsDescriptionInput.value = "";
@@ -130,4 +136,9 @@ newsFormSubmit.addEventListener("click", async (ev) => {
     clearInput();
     location.reload();
   }
+});
+
+document.querySelector(".sign-out").addEventListener("click", () => {
+  window.localStorage.removeItem("loginUserToken");
+  window.location.href = "../Auth/Form.html";
 });

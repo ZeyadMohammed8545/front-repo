@@ -230,6 +230,7 @@ body {
   font-weight: 400;
 }
 .container__form.container--forget {
+  width: 50%;
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -255,6 +256,7 @@ body {
   left: 50%;
   transform: translateX(-50%);
 }
+
 
 @keyframes show {
   0%,

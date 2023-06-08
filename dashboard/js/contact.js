@@ -1,5 +1,11 @@
 const contactContainer = document.querySelector(".contact-container");
 
+const { name, userImage } = userData;
+const adminName = document.querySelector(".icons h5");
+const adminImage = document.querySelector(".icons img");
+adminName.textContent = name;
+adminImage.src = `http://localhost:4000/${userImage}`;
+
 const DateHandler = (dateStr) => {
   const date = new Date(dateStr);
   let day = date.getDate();
@@ -21,40 +27,53 @@ fetch("http://localhost:4000/contacts")
   .then((data) => {
     if (data.Requests) {
       if (data.Requests.length > 0) {
+        console.log(data.Requests);
         data.Requests.forEach((request) => {
-          contactContainer.innerHTML += ` <div class="contact-request">
-                    <div class="picture-holder">
-                        <img src="./imgs/avatar.png" alt="Not Available">
-                        <h2 class = "user-name">${request.firstName} ${
-            request.lastName
-          }</h2>
-                    </div>
-                    <div class="info-container">
-                        <div class="general-info part">
-                            <h3>Name: <span>${request.firstName} ${
-            request.lastName
-          }</span></h3>
-                            <h3>Email: <span>${request.email}</span></h3>
-                            <h3>Phone: <span>${request.phone}</span></h3>
-                        </div>
-                        <div class="request-info part">
-                            <h3>Address: <span>${request.address}</span></h3>
-                            <h3>Message: <span>${request.message}</span></h3>
-                            <h3>Date: <span>${DateHandler(
-                              request.date
-                            )}</span></h3>
-                        </div>
-                        <div class="message-info part">
-                            <h4>Message: <span>${request.message}</span></h3>
-                            <!-- </div>      -->
-                       </div>
-                       <div class="btn-holder">
-                        <button onclick = "deleteClickHandler(${
-                          request.id
-                        })">DELETE</button>
-                       </div>
-                    </div>
-               </div>`;
+          contactContainer.innerHTML += `<div class="feed-card overview bg-white rad-10 d-flex align-center">
+          <div class="avatar-box txt-c p-20">
+            <img class="rad-half mb-10" src="imgs/avatar.png" alt="" />
+            <h3 class="m-0">${request.firstName} ${request.lastName}</h3>
+            <p class="c-grey mt-10">${request.email}</p>
+          </div>
+          <div class="info-box w-full txt-c-mobile">
+            <!-- Start Information Row -->
+            <div class="box p-20 d-flex align-center">
+              <h4 class="c-grey fs-15 m-0 w-full">General Information</h4>
+              <div class="fs-14">
+                <span class="c-grey">First Name</span>
+                <span>${request.firstName}</span>
+              </div>
+              <div class="fs-14">
+                <span class="c-grey">Last Name</span>
+                <span>${request.lastName}</span>
+              </div>
+            </div>
+            <!-- End Information Row -->
+            <!-- Start Information Row -->
+            <div class="box p-20 d-flex align-center">
+              <h4 class="c-grey w-full fs-15 m-0">Personal Information</h4>
+              <div class="fs-14">
+                <span class="c-grey">Email: ${request.email}</span>
+                <span>o@nn.sa</span>
+              </div>
+              <div class="fs-14">
+                <span class="c-grey">Post Date</span>
+                <span>Date: ${DateHandler(request.date)}</span>
+              </div>
+            </div>
+            <!-- End Information Row -->
+
+            <!-- Start Information Row -->
+            <div class="box p-20 d-flex align-center">
+              <h4 class="c-grey w-full fs-15 m-2">Message</h4>
+              <h5>${request.message}</h5>
+              <div class="btn-holder"><button class="delete-btn" onclick = "deleteClickHandler(${
+                request.id
+              })">Delete</button></div>
+            </div>
+            <!-- End Information Row -->
+          </div>
+        </div>`;
         });
       } else {
         contactContainer.innerHTML = `<p class = "err-txt">No Contacts Found</p>`;
@@ -74,3 +93,8 @@ const deleteClickHandler = async (id) => {
   const result = await response.json();
   location.reload();
 };
+
+document.querySelector(".sign-out").addEventListener("click", () => {
+  window.localStorage.removeItem("loginUserToken");
+  window.location.href = "../Auth/Form.html";
+});
