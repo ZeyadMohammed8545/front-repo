@@ -57,7 +57,7 @@ const app = async function () {
 `;
 
   programsContainer.innerHTML += `<div class="programs-page-btn">
-  <a href="../services.html" class="btn btn-primary w-25">المزيد من ألبرامج</a>
+  <a href="./service.html" class="btn btn-primary w-25">المزيد من ألبرامج</a>
 </div>`;
 };
 
