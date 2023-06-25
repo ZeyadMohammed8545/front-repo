@@ -8,6 +8,8 @@ const apiKey =
 const orderRegesterationLink = "https://accept.paymob.com/api/ecommerce/orders";
 const paymentKeyLink = "https://accept.paymob.com/api/acceptance/payment_keys";
 
+const verifyLoggedEndPoint = "http://localhost:4000/verify-user";
+
 const programImage = document.querySelector(".event-image");
 const programTitle = document.querySelector(".event-title");
 const programDescription = document.querySelector(".event-description");
@@ -15,7 +17,8 @@ const programPrice = document.querySelector(".event-price");
 const programBtn = document.querySelector(".donate-btn");
 
 const apiHandler = async (requestData) => {
-  const { apiLink, apiMethod, apiHeaders, apiBody } = requestData;
+  const { apiLink, apiMethod, apiHeaders, apiBody, verificationToken } =
+    requestData;
   const apiResponse = await fetch(apiLink, {
     method: apiMethod || "GET",
     body: JSON.stringify(apiBody) || null,
@@ -31,62 +34,78 @@ async function App() {
   const programData = await apiHandler({ apiLink: singleProgramEndpoint });
   const { program } = programData;
   const { imgPath, title, price, description } = program;
+  console.log("the Program Id is ==>>  " + programId);
+  window.localStorage.setItem("program_id", programId);
 
   programImage.src = `http://localhost:4000/${imgPath}`;
   programTitle.textContent = title;
   programDescription.textContent = description;
   programPrice.textContent = ` السعر: ${price}.EGP`;
   programBtn.addEventListener("click", async (ev) => {
-    const { token } = await apiHandler({
-      apiLink: authLink,
-      apiMethod: "POST",
-      apiHeaders: { "Content-Type": "application/json" },
-      apiBody: { api_key: apiKey },
-    });
-
-    console.log(token);
-
-    const { id } = await apiHandler({
-      apiLink: orderRegesterationLink,
-      apiMethod: "POST",
-      apiHeaders: { "Content-Type": "application/json" },
-      apiBody: {
-        auth_token: token,
-        delivery_needed: false,
-        amount_cents: price * 100,
-        currency: "EGP",
-        item: programData,
-      },
-    });
-
-    console.log(id);
-
-    const { token: lastKey } = await apiHandler({
-      apiLink: paymentKeyLink,
-      apiMethod: "POST",
-      apiHeaders: { "Content-Type": "application/json" },
-      apiBody: {
-        auth_token: token,
-        amount_cents: price * 100,
-        expiration: 3600,
-        order_id: id,
-        billing_data: {
-          email: "claudette09@exa.com",
-          first_name: "Clifford",
-          phone_number: "+86(8)9135210487",
-          country: "Egypt",
-          last_name: "Nicolas",
-          street: "testStreet",
-          building: "test Building",
-          floor: "test Floor",
-          apartment: "test Apartment",
-          city: "test City",
+    //check Logged
+    if (userData !== undefined && userData !== null && userData !== "") {
+      const { token: verificationToken } = userData;
+      const response = await apiHandler({
+        apiLink: verifyLoggedEndPoint,
+        apiMethod: "GET",
+        apiHeaders: {
+          Authorized: `Bearer ${verificationToken}`,
         },
-        currency: "EGP",
-        integration_id: 3876616,
-      },
-    });
-    window.location.href = `https://accept.paymob.com/api/acceptance/iframes/764189?payment_token=${lastKey}`;
+      });
+
+      if (response.status === true) {
+        const { token } = await apiHandler({
+          apiLink: authLink,
+          apiMethod: "POST",
+          apiHeaders: { "Content-Type": "application/json" },
+          apiBody: { api_key: apiKey },
+        });
+        console.log(token);
+        const { id } = await apiHandler({
+          apiLink: orderRegesterationLink,
+          apiMethod: "POST",
+          apiHeaders: { "Content-Type": "application/json" },
+          apiBody: {
+            auth_token: token,
+            delivery_needed: false,
+            amount_cents: price * 100,
+            currency: "EGP",
+            item: programData,
+          },
+        });
+        console.log(id);
+        const { token: lastKey } = await apiHandler({
+          apiLink: paymentKeyLink,
+          apiMethod: "POST",
+          apiHeaders: { "Content-Type": "application/json" },
+          apiBody: {
+            auth_token: token,
+            amount_cents: price * 100,
+            expiration: 3600,
+            order_id: id,
+            billing_data: {
+              email: "claudette09@exa.com",
+              first_name: "Clifford",
+              phone_number: "+86(8)9135210487",
+              country: "Egypt",
+              last_name: "Nicolas",
+              street: "testStreet",
+              building: "test Building",
+              floor: "test Floor",
+              apartment: "test Apartment",
+              city: "test City",
+            },
+            currency: "EGP",
+            integration_id: 3876616,
+          },
+        });
+        window.location.href = `https://accept.paymob.com/api/acceptance/iframes/764189?payment_token=${lastKey}`;
+      } else {
+        window.location.href = "../Auth/Form.html";
+      }
+    } else {
+      window.location.href = "../Auth/Form.html";
+    }
   });
 }
 

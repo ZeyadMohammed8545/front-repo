@@ -1,0 +1,36 @@
+.response-container {
+  width: 100%;
+  margin: 80px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.transaction-status {
+  padding: 20px;
+  font-size: 25px;
+  font-weight: 600;
+  display: none;
+}
+.transaction-status.visible {
+  display: block;
+}
+.container-response {
+  padding: 20px;
+  width: 50%;
+  display: none;
+}
+.container-response.success-response {
+  display: block;
+  background-color: #00f7007d;
+  border: 1px solid green;
+}
+.container-response.err-response {
+  display: block;
+  border: 3px solid red;
+  background-color: rgba(255, 0, 0, 0.445);
+}
+.container-response p {
+  font-size: 20px;
+  font-weight: 600;
+}

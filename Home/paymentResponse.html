@@ -13,8 +13,29 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="./css/singlenewsPage.css">
+    <link rel="stylesheet" href="./css/responsePage.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap"
         rel="stylesheet">
+
+    <script>
+        const userData = JSON.parse(window.localStorage.getItem("loginUserToken"));
+        if (userData) {
+            const verifyEndpoint = "http://localhost:4000/verify-user"
+            const { token } = userData
+            fetch(verifyEndpoint, {
+                method: "GET",
+                headers: {
+                    Authorized: `Bearer ${token}`
+                }
+            }).then(response => {
+                if (status !== 200 || status !== 201) {
+                    window.location.href = "../Auth/Form.html"
+                }
+            })
+        } else {
+            window.location.href = "../Auth/Form.html"
+        }
+    </script>
 </head>
 
 <body>
@@ -104,8 +125,16 @@
     <!-- end nav -->
 
 
-    <div class="event-container my-5">
-        container
+    <div class="response-container ">
+        <h3 class="transaction-status"></h3>
+        <div class="container-response">
+            <p class="response-user-name">اسم المستخدم: <span class="item-value"></span></p>
+            <p class="response-email">البريد الالكتروني: <span class="item-value"></span></p>
+            <p class="response-status">الحالة: <span class="item-value"></span></p>
+            <p class="response-trans-id">الرقم التعريفي للتحويل: <span class="item-value"></span></p>
+            <p class="response-price">السعر : <span class="item-value"></span></p>
+            <p class="response-order-id">الرقم التعريفي للطلب: <span class="item-value"></span></p>
+        </div>
     </div>
     <!-- start footer -->
     <div class="footer pt-5 pb-5">
@@ -195,7 +224,7 @@
     <!-- end footer -->
 
 
-
+    <script src="./js/paymentRes.js"></script>
     <script src="JS/bootstrap.bundle.min.js"></script>
     <script src="JS/all.min.js"></script>
     <script src="JS/aos.js"></script>
