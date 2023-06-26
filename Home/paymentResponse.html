@@ -16,26 +16,6 @@
     <link rel="stylesheet" href="./css/responsePage.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@200;300;400;500;700;800;900&display=swap"
         rel="stylesheet">
-
-    <script>
-        const userData = JSON.parse(window.localStorage.getItem("loginUserToken"));
-        if (userData) {
-            const verifyEndpoint = "http://localhost:4000/verify-user"
-            const { token } = userData
-            fetch(verifyEndpoint, {
-                method: "GET",
-                headers: {
-                    Authorized: `Bearer ${token}`
-                }
-            }).then(response => {
-                if (status !== 200 || status !== 201) {
-                    window.location.href = "../Auth/Form.html"
-                }
-            })
-        } else {
-            window.location.href = "../Auth/Form.html"
-        }
-    </script>
 </head>
 
 <body>
@@ -223,7 +203,7 @@
     </div>
     <!-- end footer -->
 
-
+    <script src="./js//verifyLogged.js"></script>
     <script src="./js/paymentRes.js"></script>
     <script src="JS/bootstrap.bundle.min.js"></script>
     <script src="JS/all.min.js"></script>

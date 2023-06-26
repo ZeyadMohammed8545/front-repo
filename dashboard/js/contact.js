@@ -32,20 +32,16 @@ fetch("http://localhost:4000/contacts")
           contactContainer.innerHTML += `<div class="feed-card overview bg-white rad-10 d-flex align-center">
           <div class="avatar-box txt-c p-20">
             <img class="rad-half mb-10" src="imgs/avatar.png" alt="" />
-            <h3 class="m-0">${request.firstName} ${request.lastName}</h3>
-            <p class="c-grey mt-10">${request.email}</p>
+            <h3 class="m-0"> ${request.userId.name}</h3>
+            <p class="c-grey mt-10">${request.userId.email}</p>
           </div>
           <div class="info-box w-full txt-c-mobile">
             <!-- Start Information Row -->
             <div class="box p-20 d-flex align-center">
               <h4 class="c-grey fs-15 m-0 w-full">General Information</h4>
               <div class="fs-14">
-                <span class="c-grey">First Name</span>
-                <span>${request.firstName}</span>
-              </div>
-              <div class="fs-14">
-                <span class="c-grey">Last Name</span>
-                <span>${request.lastName}</span>
+                <span class="c-grey">Name</span>
+                <span>${request.userId.name}</span>
               </div>
             </div>
             <!-- End Information Row -->
@@ -53,12 +49,11 @@ fetch("http://localhost:4000/contacts")
             <div class="box p-20 d-flex align-center">
               <h4 class="c-grey w-full fs-15 m-0">Personal Information</h4>
               <div class="fs-14">
-                <span class="c-grey">Email: ${request.email}</span>
-                <span>o@nn.sa</span>
+                <span class="c-grey">Email: ${request.userId.email}</span>
               </div>
               <div class="fs-14">
                 <span class="c-grey">Post Date</span>
-                <span>Date: ${DateHandler(request.date)}</span>
+                <span>Date: ${DateHandler(request.id)}</span>
               </div>
             </div>
             <!-- End Information Row -->

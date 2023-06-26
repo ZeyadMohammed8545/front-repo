@@ -70,7 +70,7 @@ signUpSubmit.addEventListener("click", async (ev) => {
     signupStatus.classList.add("err");
     signupStatus.textContent = result.message;
   }
-  clearInput();
+  // clearInput();
 });
 // ===================================================
 
