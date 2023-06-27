@@ -4,13 +4,19 @@ const newsCount = document.querySelector(".news-count");
 const feedsCount = document.querySelector(".feeds-count");
 const contactsCount = document.querySelector(".contacts-count");
 
+const { name, userImage, token } = userData;
+
 console.log(programsCount);
 console.log(usersCount);
 console.log(newsCount);
 console.log(feedsCount);
 console.log(contactsCount);
 
-fetch("http://localhost:4000/statistics")
+fetch("http://localhost:4000/statistics", {
+  headers: {
+    Authorized: `Bearer ${token}`,
+  },
+})
   .then((response) => {
     return response.json();
   })
@@ -25,7 +31,6 @@ fetch("http://localhost:4000/statistics")
     feedsCount.textContent = `Available Programs : ${FeedCount}`;
   });
 
-const { name, userImage } = userData;
 const adminName = document.querySelector(".icons h5");
 const adminImage = document.querySelector(".icons img");
 adminName.textContent = name;
@@ -35,5 +40,3 @@ document.querySelector(".sign-out").addEventListener("click", () => {
   window.localStorage.removeItem("loginUserToken");
   window.location.href = "../Auth/Form.html";
 });
-
-

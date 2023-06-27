@@ -1,12 +1,16 @@
 const usersContainer = document.querySelector(".users-container");
-const { name, userImage } = userData;
+const { name, userImage, token } = userData;
 const adminName = document.querySelector(".icons h5");
 const adminImage = document.querySelector(".icons img");
 adminName.textContent = name;
 adminImage.src = `http://localhost:4000/${userImage}`;
 
 console.log(usersContainer);
-fetch("http://localhost:4000/get-users")
+fetch("http://localhost:4000/get-users", {
+  headers: {
+    Authorized: `Bearer ${token}`,
+  },
+})
   .then((users) => {
     return users.json();
   })
@@ -71,12 +75,14 @@ const userDeleteHandler = async (id) => {
   //   console.log(id);
   const response = await fetch(`http://localhost:4000/delete-user/${id}`, {
     method: "DELETE",
+    headers: {
+      Authorized: `Bearer ${token}`,
+    },
   });
   const result = await response.json();
   location.reload();
   console.log(result);
 };
-
 
 document.querySelector(".sign-out").addEventListener("click", () => {
   window.localStorage.removeItem("loginUserToken");

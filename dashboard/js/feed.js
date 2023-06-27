@@ -1,6 +1,6 @@
 const feedContainer = document.querySelector(".feeds-container");
 
-const { name, userImage } = userData;
+const { name, userImage, token } = userData;
 const adminName = document.querySelector(".icons h5");
 const adminImage = document.querySelector(".icons img");
 adminName.textContent = name;
@@ -20,7 +20,11 @@ const DateHandler = (dateStr) => {
   return `${day}-${month}-${Year}`;
 };
 
-fetch("http://localhost:4000/feed")
+fetch("http://localhost:4000/feed", {
+  headers: {
+    Authorized: `Bearer ${token}`,
+  },
+})
   .then((response) => {
     return response.json();
   })
@@ -29,8 +33,8 @@ fetch("http://localhost:4000/feed")
       feedContainer.innerHTML += ` <div class="feed-card overview bg-white rad-10 d-flex align-center">
         <div class="avatar-box txt-c p-20">
           <img class="rad-half mb-10" src="imgs/avatar.png" alt="" />
-          <h3 class="m-0">${el.firstName} ${el.lastName}</h3>
-          <p class="c-grey mt-10">@User1</p>
+          <h3 class="m-0">${el.user.name} </h3>
+          <p class="c-grey mt-10">${el.user.email}</p>
         </div>
         <div class="info-box w-full txt-c-mobile">
           <!-- Start Information Row -->
@@ -38,7 +42,7 @@ fetch("http://localhost:4000/feed")
             <h4 class="c-grey fs-15 m-0 w-full">General Information</h4>
             <div class="fs-14">
               <span class="c-grey">Full Name</span>
-              <span>${el.firstName} ${el.lastName}</span>
+              <span> ${el.user.name}</span>
             </div>
             <div class="fs-14">
               <span class="c-grey">Subject</span>
@@ -51,11 +55,11 @@ fetch("http://localhost:4000/feed")
             <h4 class="c-grey w-full fs-15 m-0">Personal Information</h4>
             <div class="fs-14">
               <span class="c-grey">Email:</span>
-              <span>o@nn.sa</span>
+              <span>${el.user.email}</span>
             </div>
             <div class="fs-14">
               <span class="c-grey">Post Date</span>
-              <span>${DateHandler(el.date)}</span>
+              <span>${DateHandler(el.id)}</span>
             </div>
           </div>
           <!-- End Information Row -->
@@ -81,6 +85,9 @@ const deleteClickHandler = async (id) => {
   //   console.log(id);
   const result = await fetch(`http://localhost:4000/delete-feed/${id}`, {
     method: "DELETE",
+    headers: {
+      Authorized: `Bearer ${token}`,
+    },
   });
   const response = await result.json();
   location.reload();

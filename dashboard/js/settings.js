@@ -16,7 +16,7 @@ let adminId = "";
 //fetch All Admins
 let mode = "add";
 
-const { name, userImage } = userData;
+const { name, userImage, token } = userData;
 const adminName = document.querySelector(".icons h5");
 const adminImage = document.querySelector(".icons img");
 adminName.textContent = name;
@@ -38,7 +38,11 @@ adminReset.addEventListener("click", () => {
   clearInput();
 });
 
-fetch("http://localhost:4000/get-admins")
+fetch("http://localhost:4000/get-admins", {
+  headers: {
+    Authorized: `Bearer ${token}`,
+  },
+})
   .then((response) => {
     return response.json();
   })
@@ -118,6 +122,9 @@ adminSubmit.addEventListener("click", async (ev) => {
     const response = await fetch("http://localhost:4000/add-admin", {
       method: "POST",
       body: formData,
+      headers: {
+        Authorized: `Bearer ${token}`,
+      },
     });
     const result = await response.json();
     location.reload();
@@ -127,13 +134,15 @@ adminSubmit.addEventListener("click", async (ev) => {
       {
         method: "PUT",
         body: formData,
+        headers: {
+          Authorized: `Bearer ${token}`,
+        },
       }
     );
     const result = await response.json();
     location.reload();
   }
 });
-
 
 document.querySelector(".sign-out").addEventListener("click", () => {
   window.localStorage.removeItem("loginUserToken");

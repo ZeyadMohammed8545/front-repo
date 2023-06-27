@@ -10,7 +10,7 @@ const formImage = document.querySelector(".form-img");
 let mode = "add";
 let NewsId;
 
-const { name, userImage } = userData;
+const { name, userImage, token } = userData;
 const adminName = document.querySelector(".icons h5");
 const adminImage = document.querySelector(".icons img");
 adminName.textContent = name;
@@ -94,6 +94,9 @@ fetch("http://localhost:4000/news")
 const newsDeleteHandler = async (id) => {
   const response = await fetch(`http://localhost:4000/delete-news/${id}`, {
     method: "DELETE",
+    headers: {
+      Authorized: `Bearer ${token}`,
+    },
   });
   const result = await response.json();
   location.reload();
@@ -120,6 +123,9 @@ newsFormSubmit.addEventListener("click", async (ev) => {
     const response = await fetch("http://localhost:4000/add-news", {
       method: "POST",
       body: formData,
+      headers: {
+        Authorized: `Bearer ${token}`,
+      },
     });
     const result = await response.json();
     clearInput();
@@ -130,6 +136,9 @@ newsFormSubmit.addEventListener("click", async (ev) => {
       {
         method: "PUT",
         body: formData,
+        headers: {
+          Authorized: `Bearer ${token}`,
+        },
       }
     );
     const result = await response.json();

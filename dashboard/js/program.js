@@ -6,7 +6,7 @@ const descriptionInput = document.querySelector(".program-description");
 const cardsParent = document.querySelector(".cards-parent");
 const formImage = document.querySelector(".form-image");
 const resetBtn = document.querySelector(".reset-btn");
-const { name, userImage } = userData;
+const { name, userImage, token } = userData;
 const adminName = document.querySelector(".icons h5");
 const adminImage = document.querySelector(".icons img");
 adminName.textContent = name;
@@ -62,6 +62,9 @@ fetch("http://localhost:4000/programs")
 function deleteHandler(id) {
   fetch(`http://localhost:4000/delete-program/${id}`, {
     method: "DELETE",
+    headers: {
+      Authorized: `Bearer ${token}`,
+    },
   })
     .then((res) => {
       return res.json();
@@ -77,7 +80,11 @@ function deleteHandler(id) {
 
 function editHandler(prod_id) {
   mode = "edit";
-  fetch(`http://localhost:4000/edit-program/${prod_id}`)
+  fetch(`http://localhost:4000/edit-program/${prod_id}`, {
+    headers: {
+      Authorized: `Bearer ${token}`,
+    },
+  })
     .then((program) => {
       return program.json();
     })
@@ -104,9 +111,12 @@ submitForm.addEventListener("submit", (ev) => {
   }
   formData.append("description", descriptionInput.value);
   if (mode == "add") {
-    fetch("http://localhost:4000/add-product", {
+    fetch("http://localhost:4000/add-program", {
       method: "POST",
       body: formData,
+      headers: {
+        Authorized: `Bearer ${token}`,
+      },
     })
       .then((result) => {
         console.log(result);
@@ -122,6 +132,9 @@ submitForm.addEventListener("submit", (ev) => {
     fetch(`http://localhost:4000/edit-program/${program_id}`, {
       method: "PUT",
       body: formData,
+      headers: {
+        Authorized: `Bearer ${token}`,
+      },
     })
       .then((result) => {
         console.log(result);

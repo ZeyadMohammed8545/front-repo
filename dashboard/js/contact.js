@@ -1,6 +1,6 @@
 const contactContainer = document.querySelector(".contact-container");
 
-const { name, userImage } = userData;
+const { name, userImage, token } = userData;
 const adminName = document.querySelector(".icons h5");
 const adminImage = document.querySelector(".icons img");
 adminName.textContent = name;
@@ -20,7 +20,11 @@ const DateHandler = (dateStr) => {
   return `${day}-${month}-${Year}`;
 };
 
-fetch("http://localhost:4000/contacts")
+fetch("http://localhost:4000/contacts", {
+  headers: {
+    Authorized: `Bearer ${token}`,
+  },
+})
   .then((contacts) => {
     return contacts.json();
   })
@@ -32,8 +36,8 @@ fetch("http://localhost:4000/contacts")
           contactContainer.innerHTML += `<div class="feed-card overview bg-white rad-10 d-flex align-center">
           <div class="avatar-box txt-c p-20">
             <img class="rad-half mb-10" src="imgs/avatar.png" alt="" />
-            <h3 class="m-0"> ${request.userId.name}</h3>
-            <p class="c-grey mt-10">${request.userId.email}</p>
+            <h3 class="m-0"> ${request.user.name}</h3>
+            <p class="c-grey mt-10">${request.user.email}</p>
           </div>
           <div class="info-box w-full txt-c-mobile">
             <!-- Start Information Row -->
@@ -41,7 +45,7 @@ fetch("http://localhost:4000/contacts")
               <h4 class="c-grey fs-15 m-0 w-full">General Information</h4>
               <div class="fs-14">
                 <span class="c-grey">Name</span>
-                <span>${request.userId.name}</span>
+                <span>${request.user.name}</span>
               </div>
             </div>
             <!-- End Information Row -->
@@ -49,7 +53,7 @@ fetch("http://localhost:4000/contacts")
             <div class="box p-20 d-flex align-center">
               <h4 class="c-grey w-full fs-15 m-0">Personal Information</h4>
               <div class="fs-14">
-                <span class="c-grey">Email: ${request.userId.email}</span>
+                <span class="c-grey">Email: ${request.user.email}</span>
               </div>
               <div class="fs-14">
                 <span class="c-grey">Post Date</span>
@@ -84,6 +88,9 @@ fetch("http://localhost:4000/contacts")
 const deleteClickHandler = async (id) => {
   const response = await fetch(`http://localhost:4000/delete-contact/${id}`, {
     method: "DELETE",
+    headers: {
+      Authorized: `Bearer ${token}`,
+    },
   });
   const result = await response.json();
   location.reload();
