@@ -1,0 +1,42 @@
+.orders-content {
+  display: flex;
+  gap: 50px 10px;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.statistics {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.statistics-card {
+  padding: 20px;
+  border-radius: 10px;
+  width: 31%;
+  background-color: #ddd;
+  font-size: 20px;
+  font-weight: 600;
+}
+.statistic-info.total {
+  color: #0d6efd;
+}
+.statistic-info.delivered {
+  color: #28a745;
+}
+.statistic-info.pending {
+  color: red;
+}
+.header-row {
+  background-color: #bdbbbb !important;
+}
+
+table * {
+  border: none !important;
+}
+
+.actions-cell {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 5px 5px !important;
+}

@@ -1,0 +1,142 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Orders</title>
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/framework.css" />
+    <link rel="stylesheet" href="css/master.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./css/order.css">
+    <script src="./js/verify.js"></script>
+
+</head>
+
+<body>
+
+    <div class="page d-flex">
+        <div class="sidebar bg-white p-20 p-relative">
+            <h3 class="p-relative txt-c mt-0">Charity Center</h3>
+            <ul>
+                <li>
+                    <a class="active d-flex align-center fs-14 c-black rad-6 p-10" href="index.html">
+                        <i class="fa-solid fa-house"></i>
+                        <span>Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="settings.html">
+                        <i class="fa-solid fa-gear fa-fw"></i>
+                        <span>Admins</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="users.html">
+                        <i class="fa-regular fa-user fa-fw"></i>
+                        <span>Users</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="Programs.html">
+                        <i class="fa-solid fa-diagram-project fa-fw"></i>
+                        <span>Programs</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="feed.html">
+                        <i class="fa-solid fa-comment"></i>
+                        <span>Feedback</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="News.html">
+                        <i class="fa-solid fa-newspaper"></i>
+                        <span>News</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="Contact.html">
+                        <i class="fa-regular fa-file fa-fw"></i>
+                        <span>Contact Requests</span>
+                    </a>
+                </li>
+                <li>
+                    <a class="d-flex align-center fs-14 c-black rad-6 p-10" href="orders.html">
+                        <i class="fa-regular fa-credit-card fa-fw"></i>
+                        <span>Orders</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="content w-full">
+            <!-- Start Head -->
+            <div class="head bg-white p-15 flex-end">
+
+                <div class="icons d-flex align-center">
+                    <h5 class="admin-name">Admin name</h5>
+                    <img class="admin-image" src="imgs/avatar.png" alt="" />
+                </div>
+                <div class="sign-out-btn">
+                    <button class="px-3 mx-3 btn btn-danger sign-out">Sign Out</button>
+                </div>
+            </div>
+            <!-- End Head -->
+            <h1 class="p-relative">Order Details</h1>
+            <div class="profile-page m-20 feeds-container orders-container">
+                <!-- Start Overview -->
+                <div class="info-container">
+                    <div class="user-info info-part">
+                        <h1 class="heading">User Data</h1>
+                        <div class="user-image img-holder">
+                            <img src="../dashboard/imgs/avatar.png" alt="Not Available" class="user-image">
+                        </div>
+                        <div class="user-details">
+                            <p class="user-name">User-Name: <span class="user-value name">Zeyad</span></p>
+                            <p class="user-email">E-mail: <span class="user-value email">zezogomaa38@gmail.com</span>
+                            </p>
+                            <p class="user-address">Address: <span class="user-value address">Shibin-ELkom Elraheb
+                                    city</span></p>
+                            <p class="user-phone">Phone: <span class="user-value phone">01552567432</span></p>
+                        </div>
+                    </div>
+                    <div class="program-info info-part">
+                        <h1 class="heading">Program Data</h1>
+                        <div class="program-image img-holder">
+                            <img src="" alt="Not available" class="program-image">
+                        </div>
+                        <div class="program-details">
+                            <p class="program-title">program-title: <span class="program-value title">this is a test
+                                    Title</span></p>
+                            <p class="program-price">program-price: <span class="program-value price">$120</span></p>
+                            <p class="program-description">program-description: <span
+                                    class="program-value description">this is a test description</span></p>
+                        </div>
+                    </div>
+                    <div class="order-info info-part">
+
+                        <h1 class="heading">Order Data</h1>
+                        <div class="order-details">
+                            <p class="status">status : <span class="order-value status">pending</span></p>
+                            <p class="transaction-id">transactionId: <span
+                                    class="order-value trans-id">transactionId</span>
+                            </p>
+                            <p class="order-id">orderId: <span class="order-value order-id">orderid</span></p>
+                            <p class="total-price">totalPrice: <span class="order-value total-price">total-price</span>
+                            </p>s
+                        </div>
+                    </div>
+                </div>
+                <!-- End Overview -->
+            </div>
+        </div>
+    </div>
+
+    <script src="./js/order.js"></script>
+</body>
+
+</html>

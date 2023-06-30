@@ -1,0 +1,29 @@
+.info-container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px 20px;
+}
+
+.info-part {
+  width: 31%;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #ddd;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.heading {
+  text-indent: -5px;
+}
+
+.img-holder {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.info-part img {
+  width: 250px !important;
+}

@@ -32,6 +32,7 @@ async function App() {
   const userData = JSON.parse(window.localStorage.getItem("loginUserToken"));
   console.log(userData);
   const programData = await apiHandler({ apiLink: singleProgramEndpoint });
+  console.log(programData);
   const { program } = programData;
   const { imgPath, title, price, description } = program;
   console.log("the Program Id is ==>>  " + programId);
