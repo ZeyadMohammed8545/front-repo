@@ -12,7 +12,7 @@ console.log(newsCount);
 console.log(feedsCount);
 console.log(contactsCount);
 
-fetch("http://localhost:4000/statistics", {
+fetch("https://charity-house.zezogomaa.repl.co/statistics", {
   headers: {
     Authorized: `Bearer ${token}`,
   },
@@ -24,17 +24,17 @@ fetch("http://localhost:4000/statistics", {
     console.log(finalResult);
     const { NewsCount, ContactCount, FeedCount, ProgramCount, UserCount } =
       finalResult;
-    programsCount.textContent = `Available Programs : ${ProgramCount}`;
-    usersCount.textContent = `Available Programs : ${UserCount}`;
-    newsCount.textContent = `Available Programs : ${NewsCount}`;
-    contactsCount.textContent = `Available Programs : ${ContactCount}`;
-    feedsCount.textContent = `Available Programs : ${FeedCount}`;
+    programsCount.textContent = `Programs Count : ${ProgramCount}`;
+    usersCount.textContent = `Users Count : ${UserCount}`;
+    newsCount.textContent = `News Count : ${NewsCount}`;
+    contactsCount.textContent = `Contacts Counts : ${ContactCount}`;
+    feedsCount.textContent = `Feeds Count : ${FeedCount}`;
   });
 
 const adminName = document.querySelector(".icons h5");
 const adminImage = document.querySelector(".icons img");
 adminName.textContent = name;
-adminImage.src = `http://localhost:4000/${userImage}`;
+adminImage.src = `https://charity-house.zezogomaa.repl.co/${userImage}`;
 
 document.querySelector(".sign-out").addEventListener("click", () => {
   window.localStorage.removeItem("loginUserToken");

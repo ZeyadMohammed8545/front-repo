@@ -9,7 +9,7 @@ resetSubmit.addEventListener("click", async (ev) => {
   const formData = new FormData();
   formData.append("searchEmail", resetEmail.value);
 
-  const response = await fetch("http://localhost:4000/post-search", {
+  const response = await fetch("charity-house.zezogomaa.repl.co/post-search", {
     method: "POST",
     body: formData,
   });

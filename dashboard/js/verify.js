@@ -4,7 +4,7 @@ if (!userData) {
 } else {
   const { token } = userData;
 
-  const AuthResponse = fetch("http://localhost:4000/verify-admin", {
+  const AuthResponse = fetch("https://charity-house.zezogomaa.repl.co/verify-admin", {
     method: "GET",
     headers: {
       Authorized: `Bearer ${token}`,

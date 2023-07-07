@@ -10,7 +10,7 @@ const { name, userImage, token } = userData;
 const adminName = document.querySelector(".icons h5");
 const adminImage = document.querySelector(".icons img");
 adminName.textContent = name;
-adminImage.src = `http://localhost:4000/${userImage}`;
+adminImage.src = `https://charity-house.zezogomaa.repl.co/${userImage}`;
 
 resetBtn.addEventListener("click", (ev) => {
   mode = "add";
@@ -23,7 +23,7 @@ resetBtn.addEventListener("click", (ev) => {
 });
 
 let mode = "add";
-fetch("http://localhost:4000/programs")
+fetch("https://charity-house.zezogomaa.repl.co/programs")
   .then((result) => {
     return result.json();
   })
@@ -34,19 +34,19 @@ fetch("http://localhost:4000/programs")
                   <h2 class="">${el.title}</h2>
                   <p class="">${el.description}</p>
                   <p>${el.price}</p>
-                  <img src="http://localhost:4000/${el.imgPath}" alt="not Available" />
+                  <img src="https://charity-house.zezogomaa.repl.co/${el.imgPath}" alt="not Available" />
                   <div class="buttons">
                     <input
                       type="button"
                       value="Delete"
-                      class="btn btn-primary delete-btn"
+                      class="btn btn-danger delete-btn"
                       onclick = "deleteHandler(${el.id})"
                     />
                     
                     <a href = "#programs-form"><input
                       type="button"
                       value="Edit"
-                      class="btn btn-danger"
+                      class="btn btn-primary"
                       onclick = "editHandler(${el.id})"
                     /></a>
                   </div>
@@ -60,27 +60,47 @@ fetch("http://localhost:4000/programs")
   });
 
 function deleteHandler(id) {
-  fetch(`http://localhost:4000/delete-program/${id}`, {
-    method: "DELETE",
-    headers: {
-      Authorized: `Bearer ${token}`,
+  swal({
+    title: "Are you sure you want to delete this Program !!.",
+    buttons: {
+      confirm: {
+        text: "Confirm",
+        value: true,
+        visible: true,
+        className: "btn-success",
+      },
+      cancel: {
+        text: "Cancel",
+        value: false,
+        visible: true,
+        className: "btn-danger",
+      },
     },
-  })
-    .then((res) => {
-      return res.json();
-    })
-    .then((data) => {
-      console.log(data);
-      location.reload();
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  }).then(async (isConfirmed) => {
+    if (isConfirmed) {
+      fetch(`https://charity-house.zezogomaa.repl.co/delete-program/${id}`, {
+        method: "DELETE",
+        headers: {
+          Authorized: `Bearer ${token}`,
+        },
+      })
+        .then((res) => {
+          return res.json();
+        })
+        .then((data) => {
+          console.log(data);
+          location.reload();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  });
 }
 
 function editHandler(prod_id) {
   mode = "edit";
-  fetch(`http://localhost:4000/edit-program/${prod_id}`, {
+  fetch(`https://charity-house.zezogomaa.repl.co/edit-program/${prod_id}`, {
     headers: {
       Authorized: `Bearer ${token}`,
     },
@@ -94,7 +114,7 @@ function editHandler(prod_id) {
       descriptionInput.value = programData.program[0].description;
       document.querySelector(".hidden-path").value =
         programData.program[0].imgPath;
-      formImage.src = `http://localhost:4000/${programData.program[0].imgPath}`;
+      formImage.src = `https://charity-house.zezogomaa.repl.co/${programData.program[0].imgPath}`;
       document.querySelector(".hidden_id").value = programData.program[0]._id;
     });
 }
@@ -111,7 +131,7 @@ submitForm.addEventListener("submit", (ev) => {
   }
   formData.append("description", descriptionInput.value);
   if (mode == "add") {
-    fetch("http://localhost:4000/add-program", {
+    fetch("https://charity-house.zezogomaa.repl.co/add-program", {
       method: "POST",
       body: formData,
       headers: {
@@ -129,13 +149,16 @@ submitForm.addEventListener("submit", (ev) => {
       });
   } else if (mode == "edit") {
     const program_id = document.querySelector(".hidden_id").value;
-    fetch(`http://localhost:4000/edit-program/${program_id}`, {
-      method: "PUT",
-      body: formData,
-      headers: {
-        Authorized: `Bearer ${token}`,
-      },
-    })
+    fetch(
+      `https://charity-house.zezogomaa.repl.co/edit-program/${program_id}`,
+      {
+        method: "PUT",
+        body: formData,
+        headers: {
+          Authorized: `Bearer ${token}`,
+        },
+      }
+    )
       .then((result) => {
         console.log(result);
       })

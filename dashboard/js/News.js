@@ -14,7 +14,7 @@ const { name, userImage, token } = userData;
 const adminName = document.querySelector(".icons h5");
 const adminImage = document.querySelector(".icons img");
 adminName.textContent = name;
-adminImage.src = `http://localhost:4000/${userImage}`;
+adminImage.src = `https://charity-house.zezogomaa.repl.co/${userImage}`;
 
 const clearInput = () => {
   newsTitleInput.value = "";
@@ -43,7 +43,7 @@ const DateHandler = (dateStr) => {
   return `${day}-${month}-${Year}`;
 };
 
-fetch("http://localhost:4000/news")
+fetch("https://charity-house.zezogomaa.repl.co/news")
   .then((news) => {
     return news.json();
   })
@@ -53,7 +53,7 @@ fetch("http://localhost:4000/news")
               <div class="card d-flex flex-row">
                 <img
                   class="card-img-top"
-                  src="http://localhost:4000/${el.imgPath}"
+                  src="https://charity-house.zezogomaa.repl.co/${el.imgPath}"
                   style="width: 250px"
                   alt="Card image cap"
                 />
@@ -92,23 +92,48 @@ fetch("http://localhost:4000/news")
   });
 
 const newsDeleteHandler = async (id) => {
-  const response = await fetch(`http://localhost:4000/delete-news/${id}`, {
-    method: "DELETE",
-    headers: {
-      Authorized: `Bearer ${token}`,
+  swal({
+    title: "Are you sure you want to delete this Item !!.",
+    buttons: {
+      confirm: {
+        text: "Confirm",
+        value: true,
+        visible: true,
+        className: "btn-success",
+      },
+      cancel: {
+        text: "Cancel",
+        value: false,
+        visible: true,
+        className: "btn-danger",
+      },
     },
+  }).then(async (isConfirmed) => {
+    if (isConfirmed) {
+      const response = await fetch(
+        `https://charity-house.zezogomaa.repl.co/delete-news/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorized: `Bearer ${token}`,
+          },
+        }
+      );
+      const result = await response.json();
+      location.reload();
+    }
   });
-  const result = await response.json();
-  location.reload();
 };
 
 const newsEditHandler = async (id) => {
   mode = "edit";
-  const response = await fetch(`http://localhost:4000/get-edit-news/${id}`);
+  const response = await fetch(
+    `https://charity-house.zezogomaa.repl.co/get-edit-news/${id}`
+  );
   const result = await response.json();
   newsTitleInput.value = result.news.title;
   newsDescriptionInput.value = result.news.title;
-  formImage.src = `http://localhost:4000/${result.news.imgPath}`;
+  formImage.src = `https://charity-house.zezogomaa.repl.co/${result.news.imgPath}`;
   NewsId = result.news._id;
 };
 
@@ -120,19 +145,22 @@ newsFormSubmit.addEventListener("click", async (ev) => {
   formData.append("image", newsImageInput.files[0]);
 
   if (mode == "add") {
-    const response = await fetch("http://localhost:4000/add-news", {
-      method: "POST",
-      body: formData,
-      headers: {
-        Authorized: `Bearer ${token}`,
-      },
-    });
+    const response = await fetch(
+      "https://charity-house.zezogomaa.repl.co/add-news",
+      {
+        method: "POST",
+        body: formData,
+        headers: {
+          Authorized: `Bearer ${token}`,
+        },
+      }
+    );
     const result = await response.json();
     clearInput();
     location.reload();
   } else {
     const response = await fetch(
-      `http://localhost:4000/post-news-edit/${NewsId}`,
+      `https://charity-house.zezogomaa.repl.co/post-news-edit/${NewsId}`,
       {
         method: "PUT",
         body: formData,

@@ -13,7 +13,7 @@ resetBtn.addEventListener("click", async (ev) => {
   ev.preventDefault();
   const formData = new FormData();
   formData.append("pass", resetPassInput.value);
-  const response = await fetch(`http://localhost:4000/post-reset/${token}`, {
+  const response = await fetch(`charity-house.zezogomaa.repl.co/post-reset/${token}`, {
     method: "POST",
     body: formData,
   });

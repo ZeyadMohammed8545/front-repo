@@ -3,10 +3,10 @@ const { name, userImage, token } = userData;
 const adminName = document.querySelector(".icons h5");
 const adminImage = document.querySelector(".icons img");
 adminName.textContent = name;
-adminImage.src = `http://localhost:4000/${userImage}`;
+adminImage.src = `https://charity-house.zezogomaa.repl.co/${userImage}`;
 
 console.log(usersContainer);
-fetch("http://localhost:4000/get-users", {
+fetch("https://charity-house.zezogomaa.repl.co/get-users", {
   headers: {
     Authorized: `Bearer ${token}`,
   },
@@ -21,7 +21,7 @@ fetch("http://localhost:4000/get-users", {
             <div class="avatar-box txt-c p-20">
               <img class="rad-half mb-10" src="${
                 user.imgPath
-                  ? `http://localhost:4000/${user.imgPath}`
+                  ? `https://charity-house.zezogomaa.repl.co/${user.imgPath}`
                   : "imgs/avatar.png"
               }" alt="" />
               <h3 class="m-0">${user.name}</h3>
@@ -73,15 +73,38 @@ fetch("http://localhost:4000/get-users", {
 
 const userDeleteHandler = async (id) => {
   //   console.log(id);
-  const response = await fetch(`http://localhost:4000/delete-user/${id}`, {
-    method: "DELETE",
-    headers: {
-      Authorized: `Bearer ${token}`,
+  swal({
+    title: "Are you sure you want to delete this user !!.",
+    buttons: {
+      confirm: {
+        text: "Confirm",
+        value: true,
+        visible: true,
+        className: "btn-success",
+      },
+      cancel: {
+        text: "Cancel",
+        value: false,
+        visible: true,
+        className: "btn-danger",
+      },
     },
+  }).then(async (isConfirmed) => {
+    if (isConfirmed) {
+      const response = await fetch(
+        `https://charity-house.zezogomaa.repl.co/delete-user/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorized: `Bearer ${token}`,
+          },
+        }
+      );
+      const result = await response.json();
+      location.reload();
+      console.log(result);
+    }
   });
-  const result = await response.json();
-  location.reload();
-  console.log(result);
 };
 
 document.querySelector(".sign-out").addEventListener("click", () => {

@@ -14,7 +14,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./css/orders.css">
     <script src="./js/verify.js"></script>
-
 </head>
 
 <body>
@@ -93,15 +92,15 @@
                     <div class="statistics">
                         <div class="statistics-card total-orders">
                             Total-orders:
-                            <div class="statistic-info total">500</div>
+                            <div class="statistic-info total"></div>
                         </div>
                         <div class="statistics-card delivered-orders">
                             Delivered-orders:
-                            <div class="statistic-info delivered">400</div>
+                            <div class="statistic-info delivered"></div>
                         </div>
                         <div class=" statistics-card pending-orders">
                             Pending-orders:
-                            <div class="statistic-info pending">100</div>
+                            <div class="statistic-info pending"></div>
                         </div>
                     </div>
                     <div class="orders-table">
@@ -109,6 +108,7 @@
                             <thead>
                                 <tr class="header-row">
                                     <th scope="col">#</th>
+                                    <th scope="col">Status</th>
                                     <th scope="col">Trans_id</th>
                                     <th scope="col">price</th>
                                     <th scope="col">Order_id</th>
@@ -127,7 +127,7 @@
             </div>
         </div>
     </div>
-
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="./js/orders.js"></script>
 </body>
 

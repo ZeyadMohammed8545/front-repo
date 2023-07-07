@@ -34,7 +34,7 @@ const apiHandler = async (options) => {
 const writeUserData = (userData) => {
   console.log(userData);
   if (userData.imgPath) {
-    userImage.src = `http://localhost:4000/${userData.imgPath}`;
+    userImage.src = `https://charity-house.zezogomaa.repl.co/${userData.imgPath}`;
   }
   userName.tetxContent = userData.name;
   userEmail.textContent = userData.email;
@@ -42,16 +42,22 @@ const writeUserData = (userData) => {
   userPhone.textContent = userData.phone;
 };
 const writeProgramData = (programData) => {
-  programImage.src = `http://localhost:4000/${programData.imgPath}`;
+  programImage.src = `https://charity-house.zezogomaa.repl.co/${programData.imgPath}`;
   programTitle.textContent = programData.title;
   programPrice.textContent = programData.price;
   programDescription.textContent = programData.description;
 };
-const writeOrderData = (orderData) => {};
+const writeOrderData = (orderData) => {
+  console.log(orderData);
+  orderStatus.textContent = orderData.status;
+  orderTransaction.textContent = orderData.transactionId;
+  orderId.textContent = orderData.orderId;
+  totalPrice.textContent = orderData.price;
+};
 
 const getOrderData = async (orderId, token) => {
   const data = await apiHandler({
-    destination: `http://localhost:4000/order-data/${orderId}`,
+    destination: `https://charity-house.zezogomaa.repl.co/order-data/${orderId}`,
     headers: { Authorized: `Bearer ${token}` },
   });
 
@@ -74,7 +80,7 @@ const signOutHandler = () => {
 
 const loginInfoHandler = (userData) => {
   adminName.textContent = userData.name;
-  adminImage.src = `http://localhost:4000/${userData.userImage}`;
+  adminImage.src = `https://charity-house.zezogomaa.repl.co/${userData.userImage}`;
   signOutBtn.addEventListener("click", signOutHandler);
 };
 

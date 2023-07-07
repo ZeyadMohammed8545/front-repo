@@ -20,7 +20,7 @@ const { name, userImage, token } = userData;
 const adminName = document.querySelector(".icons h5");
 const adminImage = document.querySelector(".icons img");
 adminName.textContent = name;
-adminImage.src = `http://localhost:4000/${userImage}`;
+adminImage.src = `https://charity-house.zezogomaa.repl.co/${userImage}`;
 
 const clearInput = () => {
   mode = "add";
@@ -38,7 +38,7 @@ adminReset.addEventListener("click", () => {
   clearInput();
 });
 
-fetch("http://localhost:4000/get-admins", {
+fetch("https://charity-house.zezogomaa.repl.co/get-admins", {
   headers: {
     Authorized: `Bearer ${token}`,
   },
@@ -52,7 +52,7 @@ fetch("http://localhost:4000/get-admins", {
               <div class="card" style="width: 25rem">
                 <img
                   class="card-img-top"
-                  src="http://localhost:4000/${admin.imgPath}" 
+                  src="https://charity-house.zezogomaa.repl.co/${admin.imgPath}" 
                   alt="Card image cap"
                 />
                 <div class="card-body">
@@ -75,7 +75,7 @@ fetch("http://localhost:4000/get-admins", {
   });
 
 // const deleteHandler = async (id) => {
-//   const response = await fetch(`http://localhost:4000/delete-admin/${id}`, {
+//   const response = await fetch(`https://charity-house.zezogomaa.repl.co/delete-admin/${id}`, {
 //     method: "DELETE",
 //   });
 //   location.reload();
@@ -83,7 +83,7 @@ fetch("http://localhost:4000/get-admins", {
 
 // const updateHandler = async (id) => {
 //   mode = "edit";
-//   const response = await fetch(`http://localhost:4000/get-admin-edit/${id}`);
+//   const response = await fetch(`https://charity-house.zezogomaa.repl.co/get-admin-edit/${id}`);
 //   const result = await response.json();
 //   userNameInput.value = result.admin.name;
 //   emailInput.value = result.admin.email;
@@ -92,7 +92,7 @@ fetch("http://localhost:4000/get-admins", {
 //   adminId = result.admin._id;
 //   hiddenImgPath = result.admin.imgPath;
 //   hiddenPass = result.admin.password;
-//   formImage.src = `http://localhost:4000/${result.admin.imgPath}`;
+//   formImage.src = `https://charity-house.zezogomaa.repl.co/${result.admin.imgPath}`;
 // };
 
 adminSubmit.addEventListener("click", async (ev) => {
@@ -119,7 +119,7 @@ adminSubmit.addEventListener("click", async (ev) => {
   }
 
   if (mode == "add") {
-    const response = await fetch("http://localhost:4000/add-admin", {
+    const response = await fetch("https://charity-house.zezogomaa.repl.co/add-admin", {
       method: "POST",
       body: formData,
       headers: {
@@ -130,7 +130,7 @@ adminSubmit.addEventListener("click", async (ev) => {
     location.reload();
   } else if (mode == "edit") {
     const response = await fetch(
-      `http://localhost:4000/edit-admin/${adminId}`,
+      `https://charity-house.zezogomaa.repl.co/edit-admin/${adminId}`,
       {
         method: "PUT",
         body: formData,

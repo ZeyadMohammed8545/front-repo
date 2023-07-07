@@ -55,7 +55,7 @@ signUpSubmit.addEventListener("click", async (ev) => {
   formData.append("address", addressInput.value);
   formData.append("password", passInput.value);
   formData.append("confPass", confPassInput.value);
-  const response = await fetch("http://localhost:4000/sign-up", {
+  const response = await fetch("https://charity-house.zezogomaa.repl.co/sign-up", {
     method: "POST",
     body: formData,
   });
@@ -76,10 +76,12 @@ signUpSubmit.addEventListener("click", async (ev) => {
 
 signInSubmit.addEventListener("click", async (ev) => {
   ev.preventDefault();
+  console.log(loginEmail.value);
+  console.log(loginPass.value);
   const formData = new FormData();
   formData.append("email", loginEmail.value);
   formData.append("password", loginPass.value);
-  const response = await fetch(`http://localhost:4000/login`, {
+  const response = await fetch(`https://charity-house.zezogomaa.repl.co/login`, {
     method: "POST",
     body: formData,
   });

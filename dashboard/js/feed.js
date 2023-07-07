@@ -4,7 +4,7 @@ const { name, userImage, token } = userData;
 const adminName = document.querySelector(".icons h5");
 const adminImage = document.querySelector(".icons img");
 adminName.textContent = name;
-adminImage.src = `http://localhost:4000/${userImage}`;
+adminImage.src = `https://charity-house.zezogomaa.repl.co/${userImage}`;
 
 const DateHandler = (dateStr) => {
   const date = new Date(dateStr);
@@ -20,7 +20,7 @@ const DateHandler = (dateStr) => {
   return `${day}-${month}-${Year}`;
 };
 
-fetch("http://localhost:4000/feed", {
+fetch("https://charity-house.zezogomaa.repl.co/feed", {
   headers: {
     Authorized: `Bearer ${token}`,
   },
@@ -83,14 +83,37 @@ fetch("http://localhost:4000/feed", {
 
 const deleteClickHandler = async (id) => {
   //   console.log(id);
-  const result = await fetch(`http://localhost:4000/delete-feed/${id}`, {
-    method: "DELETE",
-    headers: {
-      Authorized: `Bearer ${token}`,
+  swal({
+    title: "Are you sure you want to delete this Item !!.",
+    buttons: {
+      confirm: {
+        text: "Confirm",
+        value: true,
+        visible: true,
+        className: "btn-success",
+      },
+      cancel: {
+        text: "Cancel",
+        value: false,
+        visible: true,
+        className: "btn-danger",
+      },
     },
+  }).then(async (isConfirmed) => {
+    if (isConfirmed) {
+      const result = await fetch(
+        `https://charity-house.zezogomaa.repl.co/delete-feed/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            Authorized: `Bearer ${token}`,
+          },
+        }
+      );
+      const response = await result.json();
+      location.reload();
+    }
   });
-  const response = await result.json();
-  location.reload();
 };
 
 document.querySelector(".sign-out").addEventListener("click", () => {
