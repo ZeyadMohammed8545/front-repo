@@ -1,6 +1,6 @@
 console.log("start");
 const programsContainer = document.querySelector(".programs-container");
-const programsEndPoint = "http://localhost:4000/programs";
+const programsEndPoint = "https://charity-house.zezogomaa.repl.co/programs";
 
 const apiHandler = async (apiData) => {
   const apiResponse = await fetch(apiData.target);
@@ -13,7 +13,7 @@ async function App() {
   programs.forEach((program) => {
     programsContainer.innerHTML += ` <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="1000">
         <div class="card">
-          <img src="http://localhost:4000/${
+          <img src="https://charity-house.zezogomaa.repl.co/${
             program.imgPath
           }" class="card-img-top" alt="...">
           <div class="card-body">

@@ -45,7 +45,7 @@ async function App() {
     // post the Order to it's endpoint
 
     const addOrderResponse = await apiHandler({
-      destination: "http://localhost:4000/add-order",
+      destination: "https://charity-house.zezogomaa.repl.co/add-order",
       method: "POST",
       body: allParams,
       headers: {

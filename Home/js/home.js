@@ -1,8 +1,8 @@
 const newsContainer = document.querySelector(".news-container");
 const programsContainer = document.querySelector(".programs-container");
 
-const newsEndPoint = "http://localhost:4000/news";
-const programsEndPoint = "http://localhost:4000/programs";
+const newsEndPoint = "https://charity-house.zezogomaa.repl.co/news";
+const programsEndPoint = "https://charity-house.zezogomaa.repl.co/programs";
 
 // console.log(newsContainer);
 // console.log(programsContainer);
@@ -21,7 +21,7 @@ const app = async function () {
   for (let i = 0; i < 3; i++) {
     newsContainer.innerHTML += ` <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="1000">
     <div class="card">
-      <img src="http://localhost:4000/${
+      <img src="https://charity-house.zezogomaa.repl.co/${
         news[i].imgPath
       }" class="card-img-top" alt="...">
       <div class="card-body">
@@ -36,7 +36,7 @@ const app = async function () {
 
     programsContainer.innerHTML += `  <div class="col-12 col-md-6 col-lg-4" data-aos="fade-down">
   <div class="card">
-    <img src="http://localhost:4000/${
+    <img src="https://charity-house.zezogomaa.repl.co/${
       programs[i].imgPath
     }" class="card-img-top w-100" alt="...">
     <div class="card-body">

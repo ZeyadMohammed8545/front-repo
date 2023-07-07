@@ -1,14 +1,14 @@
 console.log("start");
 const currentUrl = new URL(window.location.href);
 const programId = currentUrl.searchParams.get("target");
-const singleProgramEndpoint = `http://localhost:4000/edit-program/${programId}`;
+const singleProgramEndpoint = `https://charity-house.zezogomaa.repl.co/edit-program/${programId}`;
 const authLink = "https://accept.paymob.com/api/auth/tokens";
 const apiKey =
   "ZXlKaGJHY2lPaUpJVXpVeE1pSXNJblI1Y0NJNklrcFhWQ0o5LmV5SmpiR0Z6Y3lJNklrMWxjbU5vWVc1MElpd2ljSEp2Wm1sc1pWOXdheUk2T0RFeE1qUTJMQ0p1WVcxbElqb2lhVzVwZEdsaGJDSjkuaTA0SG1QTExHT20zeXdGOFVBR19Fc0MxY1B2OTBzcEE3em04cFREMEJTNFdaVXZZWnJ3UngtWHBUcmlPazBMVjdLNFdqeHY2VjdaN3Q1X0pUTzR1QkE=";
 const orderRegesterationLink = "https://accept.paymob.com/api/ecommerce/orders";
 const paymentKeyLink = "https://accept.paymob.com/api/acceptance/payment_keys";
 
-const verifyLoggedEndPoint = "http://localhost:4000/verify-user";
+const verifyLoggedEndPoint = "https://charity-house.zezogomaa.repl.co/verify-user";
 
 const programImage = document.querySelector(".event-image");
 const programTitle = document.querySelector(".event-title");
@@ -38,7 +38,7 @@ async function App() {
   console.log("the Program Id is ==>>  " + programId);
   window.localStorage.setItem("program_id", programId);
 
-  programImage.src = `http://localhost:4000/${imgPath}`;
+  programImage.src = `https://charity-house.zezogomaa.repl.co/${imgPath}`;
   programTitle.textContent = title;
   programDescription.textContent = description;
   programPrice.textContent = ` السعر: ${price}.EGP`;

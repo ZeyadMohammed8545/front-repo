@@ -1,6 +1,6 @@
 const userData = JSON.parse(window.localStorage.getItem("loginUserToken"));
 if (userData) {
-  const verifyEndpoint = "http://localhost:4000/verify-user";
+  const verifyEndpoint = "https://charity-house.zezogomaa.repl.co/verify-user";
   const { token } = userData;
   fetch(verifyEndpoint, {
     method: "GET",

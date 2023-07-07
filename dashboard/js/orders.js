@@ -90,14 +90,8 @@ const writeOrders = async (token) => {
         <td>${order.user.name}</td>
         <td>${order.program.title}</td>
         <td class=actions-cell>
-            <button type="button" class="btn btn-success mark-btn" onclick = "markDownHandler('${encodeURIComponent(
-              order._id
-            )}', '${encodeURIComponent(
-      token
-    )}', '${ind}')">Mark as done</button>
-            <a href = "./order.html?orderId=${
-              order._id
-            }" class="btn btn-primary">Discover<a/>
+            <button type="button" class="btn btn-success mark-btn" onclick = "markDownHandler('${encodeURIComponent(order._id)}', '${encodeURIComponent(token)}', '${ind}')">Mark as done</button>
+            <a href = "./order.html?orderId=${order._id}" class="btn btn-primary">Discover<a/>
         </td>
     </tr>`;
   });

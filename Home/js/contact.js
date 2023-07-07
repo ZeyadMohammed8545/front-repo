@@ -37,7 +37,7 @@ contactSubmit.addEventListener("click", async (ev) => {
   // formData.append("address", address.value);
   // formData.append("phone", phone.value);
   formData.append("message", message.value);
-  const response = await fetch("http://localhost:4000/add-contact", {
+  const response = await fetch("https://charity-house.zezogomaa.repl.co/add-contact", {
     method: "POST",
     body: formData,
     headers: {

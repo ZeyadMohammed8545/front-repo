@@ -23,7 +23,7 @@ feedSubmit.addEventListener("click", async (ev) => {
   formData.append("subject", feedSubject.value);
   formData.append("message", feedMessage.value);
 
-  const response = await fetch("http://localhost:4000/add-feed", {
+  const response = await fetch("https://charity-house.zezogomaa.repl.co/add-feed", {
     method: "POST",
     body: formData,
     headers: {

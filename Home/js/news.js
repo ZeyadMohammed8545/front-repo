@@ -1,5 +1,5 @@
 console.log("news Page Started");
-const newsEndpoint = "http://localhost:4000/news";
+const newsEndpoint = "https://charity-house.zezogomaa.repl.co/news";
 const newsContainer = document.querySelector(".news-container");
 
 const apiHandler = async (apiData) => {
@@ -46,7 +46,7 @@ async function App() {
                 </div>
             </div>
             <div class="col-lg-5">
-                <img src="http://localhost:4000/${
+                <img src="https://charity-house.zezogomaa.repl.co/${
                   item.imgPath
                 }" alt="single-blog" class="w-100">
             </div>

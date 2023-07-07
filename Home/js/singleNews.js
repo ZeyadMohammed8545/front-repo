@@ -1,6 +1,6 @@
 let currentUrl = new URL(window.location.href);
 let eventId = currentUrl.searchParams.get("target");
-const singleEventEndPoint = `http://localhost:4000/get-edit-news/${eventId}`;
+const singleEventEndPoint = `https://charity-house.zezogomaa.repl.co/get-edit-news/${eventId}`;
 
 const eventImage = document.querySelector(".event-image");
 const eventTitle = document.querySelector(".event-title");
@@ -25,7 +25,7 @@ async function App() {
   });
   const { imgPath, title, description } = news;
 
-  eventImage.src = `http://localhost:4000/${imgPath}`;
+  eventImage.src = `https://charity-house.zezogomaa.repl.co/${imgPath}`;
   eventTitle.textContent = title;
   eventDescription.textContent = description;
 }
