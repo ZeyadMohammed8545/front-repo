@@ -121,53 +121,63 @@ function editHandler(prod_id) {
 
 submitForm.addEventListener("submit", (ev) => {
   ev.preventDefault();
-  const formData = new FormData();
-  formData.append("title", titleInput.value);
-  formData.append("price", priceInput.value);
-  if (imageInput.files[0]) {
-    formData.append("image", imageInput.files[0]);
-  } else {
-    formData.append("image", document.querySelector(".hidden-path").value);
-  }
-  formData.append("description", descriptionInput.value);
-  if (mode == "add") {
-    fetch("https://charity-house.zezogomaa.repl.co/add-program", {
-      method: "POST",
-      body: formData,
-      headers: {
-        Authorized: `Bearer ${token}`,
-      },
-    })
-      .then((result) => {
-        console.log(result);
-      })
-      .then(() => {
-        location.reload();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  } else if (mode == "edit") {
-    const program_id = document.querySelector(".hidden_id").value;
-    fetch(
-      `https://charity-house.zezogomaa.repl.co/edit-program/${program_id}`,
-      {
-        method: "PUT",
+  const titleIsValid = titleInput.value.trim().length >= 3;
+  const priceIsValid = +priceInput.value > 0;
+  const descriptionIsValid = descriptionInput.value.trim().length > 5;
+
+  if (titleIsValid && priceIsValid && descriptionIsValid) {
+    const formData = new FormData();
+    formData.append("title", titleInput.value);
+    formData.append("price", priceInput.value);
+    if (imageInput.files[0]) {
+      formData.append("image", imageInput.files[0]);
+    } else {
+      formData.append("image", document.querySelector(".hidden-path").value);
+    }
+    formData.append("description", descriptionInput.value);
+    if (mode == "add") {
+      fetch("https://charity-house.zezogomaa.repl.co/add-program", {
+        method: "POST",
         body: formData,
         headers: {
           Authorized: `Bearer ${token}`,
         },
-      }
-    )
-      .then((result) => {
-        console.log(result);
       })
-      .then(() => {
-        location.reload();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+        .then((result) => {
+          console.log(result);
+        })
+        .then(() => {
+          location.reload();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    } else if (mode == "edit") {
+      const program_id = document.querySelector(".hidden_id").value;
+      fetch(
+        `https://charity-house.zezogomaa.repl.co/edit-program/${program_id}`,
+        {
+          method: "PUT",
+          body: formData,
+          headers: {
+            Authorized: `Bearer ${token}`,
+          },
+        }
+      )
+        .then((result) => {
+          console.log(result);
+        })
+        .then(() => {
+          location.reload();
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  } else {
+    swal({
+      title: "Invalid Inputs",
+    });
   }
 });
 
@@ -175,3 +185,30 @@ document.querySelector(".sign-out").addEventListener("click", () => {
   window.localStorage.removeItem("loginUserToken");
   window.location.href = "../Auth/Form.html";
 });
+
+const programTitleChange = (targetValue) => {
+  const isValid = targetValue.trim().length >= 3;
+  if (isValid) {
+    titleInput.classList.remove("invalid");
+  } else {
+    titleInput.classList.add("invalid");
+  }
+};
+
+const programPriceChange = (targetValue) => {
+  const isValid = +targetValue > 0;
+  if (isValid) {
+    priceInput.classList.remove("invalid");
+  } else {
+    priceInput.classList.add("invalid");
+  }
+};
+
+const programDescriptionChange = (targetValue) => {
+  const isValid = targetValue.trim().length >= 5;
+  if (isValid) {
+    descriptionInput.classList.remove("invalid");
+  } else {
+    descriptionInput.classList.add("invalid");
+  }
+};

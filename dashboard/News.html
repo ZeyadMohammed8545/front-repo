@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="css/bootstrap.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="./css/settings.css">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&display=swap" rel="stylesheet" />
   <script src="./js/verify.js"></script>
 
@@ -91,13 +92,14 @@
           <form id="connect-form">
             <div class="form-group mt-4">
               <label class="h5" for="formGroupExampleInput">Title</label>
-              <input type="text" class="form-control news-title" id="formGroupExampleInput" placeholder="Enter Title" />
+              <input type="text" class="form-control news-title" id="formGroupExampleInput" placeholder="Enter Title"
+                oninput="newsTitleChange(this.value)" />
             </div>
 
             <div class="form-group mt-4">
               <label class="h5" for="formGroupExample">description</label>
               <input type="text" class="form-control news-description" id="formGroupExample"
-                placeholder="Enter fullName" />
+                placeholder="Enter fullName" oninput="newsDescriptionChange(this.value)" />
             </div>
 
             <div class="form-group mt-4">
@@ -121,6 +123,7 @@
     </div>
   </div>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  
   <script src="./js/News.js"></script>
 </body>
 

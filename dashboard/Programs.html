@@ -12,6 +12,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="stylesheet" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" href="./css/settings.css">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&display=swap" rel="stylesheet" />
   <script src="./js/verify.js"></script>
 
@@ -92,17 +93,17 @@
             <div class="form-group mt-4">
               <label class="h5" for="formGroupExampleInput">Programs Name</label>
               <input type="text" class="form-control program-title" id="formGroupExampleInput"
-                placeholder="Enter Programs Name" />
+                placeholder="Enter Programs Name" oninput="programTitleChange(this.value)" />
             </div>
             <div class="form-group mt-4">
               <label class="h5" for="formGroupExampleInput2">Price</label>
-              <input type="text" class="form-control program-price" id="formGroupExampleInput2"
-                placeholder="Enter Price" />
+              <input type="number" class="form-control program-price" id="formGroupExampleInput2"
+                placeholder="Enter Price" oninput="programPriceChange(this.value)" />
             </div>
             <div class="form-group mt-4">
-              <label class="h5" for="formGroupExample">Deseiption</label>
+              <label class="h5" for="formGroupExample">Description</label>
               <input type="text" class="form-control program-description" id="formGroupExample"
-                placeholder="Enter Deseiption" />
+                placeholder="Enter Description" oninput="programDescriptionChange(this.value)" />
             </div>
             <div class="form-group mt-4">
               <label class="h5" for="GroupExampleInput">Imges</label>
@@ -128,6 +129,7 @@
       </div>
     </div>
   </div>
+  <script src="./js/inputValidate.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="./js/program.js"></script>
 </body>

@@ -139,39 +139,47 @@ const newsEditHandler = async (id) => {
 
 newsFormSubmit.addEventListener("click", async (ev) => {
   ev.preventDefault();
-  const formData = new FormData();
-  formData.append("title", newsTitleInput.value);
-  formData.append("description", newsDescriptionInput.value);
-  formData.append("image", newsImageInput.files[0]);
+  const titleIsValid = newsTitleInput.value.trim().length >= 3;
+  const descriptionIsValid = newsDescriptionInput.value.trim().length > 5;
+  if (titleIsValid && descriptionIsValid) {
+    const formData = new FormData();
+    formData.append("title", newsTitleInput.value);
+    formData.append("description", newsDescriptionInput.value);
+    formData.append("image", newsImageInput.files[0]);
 
-  if (mode == "add") {
-    const response = await fetch(
-      "https://charity-house.zezogomaa.repl.co/add-news",
-      {
-        method: "POST",
-        body: formData,
-        headers: {
-          Authorized: `Bearer ${token}`,
-        },
-      }
-    );
-    const result = await response.json();
-    clearInput();
-    location.reload();
+    if (mode == "add") {
+      const response = await fetch(
+        "https://charity-house.zezogomaa.repl.co/add-news",
+        {
+          method: "POST",
+          body: formData,
+          headers: {
+            Authorized: `Bearer ${token}`,
+          },
+        }
+      );
+      const result = await response.json();
+      clearInput();
+      location.reload();
+    } else {
+      const response = await fetch(
+        `https://charity-house.zezogomaa.repl.co/post-news-edit/${NewsId}`,
+        {
+          method: "PUT",
+          body: formData,
+          headers: {
+            Authorized: `Bearer ${token}`,
+          },
+        }
+      );
+      const result = await response.json();
+      clearInput();
+      location.reload();
+    }
   } else {
-    const response = await fetch(
-      `https://charity-house.zezogomaa.repl.co/post-news-edit/${NewsId}`,
-      {
-        method: "PUT",
-        body: formData,
-        headers: {
-          Authorized: `Bearer ${token}`,
-        },
-      }
-    );
-    const result = await response.json();
-    clearInput();
-    location.reload();
+    swal({
+      title: "Invalid Inputs",
+    });
   }
 });
 
@@ -179,3 +187,21 @@ document.querySelector(".sign-out").addEventListener("click", () => {
   window.localStorage.removeItem("loginUserToken");
   window.location.href = "../Auth/Form.html";
 });
+
+const newsTitleChange = (targetValue) => {
+  const isValid = targetValue.trim().length >= 3;
+  if (isValid) {
+    newsTitleInput.classList.remove("invalid");
+  } else {
+    newsTitleInput.classList.add("invalid");
+  }
+};
+
+const newsDescriptionChange = (targetValue) => {
+  const isValid = targetValue.trim().length > 5;
+  if (isValid) {
+    newsDescriptionInput.classList.remove("invalid");
+  } else {
+    newsDescriptionInput.classList.add("invalid");
+  }
+};

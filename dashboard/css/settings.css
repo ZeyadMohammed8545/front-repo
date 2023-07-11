@@ -7,3 +7,9 @@ input.invalid {
 input.invalid::placeholder {
   color: #333;
 }
+
+.disabled-btn {
+  cursor: not-allowed;
+  background-color: #ddd !important;
+  color: #606060 !important;
+}
