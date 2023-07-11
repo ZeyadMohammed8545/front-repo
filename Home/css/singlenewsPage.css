@@ -2,6 +2,7 @@
   display: flex;
   justify-content: space-between;
 }
+
 .img-holder {
   width: 30%;
 }
@@ -16,4 +17,19 @@
 .event-title {
   font-size: 18px;
   font-weight: 500;
+}
+@media (max-width: 1000px) {
+  .event-container {
+    flex-direction: column;
+    text-align: center;
+  }
+  .img-holder {
+  width: 95%;
+  margin-bottom: 20px;
+  }
+  .info-holder {
+    width: 95%;
+  }
+  
+
 }

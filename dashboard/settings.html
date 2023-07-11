@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="css/bootstrap.min.css" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="./css/settings.css">
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;500&display=swap" rel="stylesheet" />
   <script src="./js/verify.js"></script>
 
@@ -88,36 +89,41 @@
       <h1 class="p-relative">Settings</h1>
       <div class="programForm">
         <div class="content p-0">
-          <form>
+          <form class="admins-form">
             <div class="form-group mt-4">
               <label class="h5" for="formGroupExampleInput">User Name</label>
               <input type="text" class="form-control user-name-input" id="formGroupExampleInput"
-                placeholder="Enter User Name" />
+                placeholder="Enter User Name" oninput="nameChange(this.value)" />
             </div>
             <div class="form-group mt-4">
               <label class="h5" for="formGroupExampleInput2">Email</label>
-              <input type="email" class="form-control email-input" id="formGroupExampleInput2"
-                placeholder="Enter Email" />
+              <input type="email" class="form-control email-input" id="formGroupExampleInput2" placeholder="Enter Email"
+                oninput="emailChange(this.value)" />
             </div>
             <div class="form-group mt-4">
               <label class="h5" for="formGroupExample">Phone</label>
               <input type="Number" class="form-control phone-input" id="formGroupExample"
-                placeholder="Enter Phone Number" />
+                placeholder="Enter Phone Number" oninput="phoneChange(this.value)" />
             </div>
             <div class="form-group mt-4">
               <label class="h5" for="formGroupExample">Address</label>
               <input type="text" class="form-control address-input" id="formGroupExample"
-                placeholder="Enter Your Address" />
+                placeholder="Enter Your Address" oninput="addressChange(this.value)" />
             </div>
             <div class="form-group mt-4">
               <label class="h5" for="GroupExampleInput">Password</label>
-              <input type="password" class="form-control pass-input" id="GroupExampleInput"
-                placeholder="Enter Password" />
+              <input type="password" class="form-control pass-input" id="GroupExampleInput" placeholder="Enter Password"
+                oninput="passwordChange(this.value)" />
+              <ul>
+                <li>password length must be 6 digits or more</li>
+                <li>password should contain at least on special character [@,#,$,etc]</li>
+                <li>password should contain at least one number digits [0-9]</li>
+              </ul>
             </div>
             <div class="form-group mt-4">
               <label class="h5" for="GroupExampleInput">Confirm Password</label>
               <input type="password" class="form-control conf-pass-input" id="GroupExampleInput"
-                placeholder="Re Enter Your Password" />
+                placeholder="Re Enter Your Password" oninput="confPassChange(this.value)" />
             </div>
             <div class="form-group mt-4">
               <label class="h5" for="GroupExampleInput">image</label>
@@ -140,6 +146,11 @@
       </div>
     </div>
   </div>
+
+
+  <!-- included scripts -->
+  <script src="./js/global.js"></script>
+  <script src="./js/inputValidate.js"></script>
   <script src="./js/settings.js"></script>
 </body>
 

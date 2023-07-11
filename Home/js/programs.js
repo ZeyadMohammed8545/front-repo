@@ -11,7 +11,7 @@ const apiHandler = async (apiData) => {
 async function App() {
   const { programs } = await apiHandler({ target: programsEndPoint });
   programs.forEach((program) => {
-    programsContainer.innerHTML += ` <div class="col-12 col-md-6 col-lg-4" data-aos="fade-up" data-aos-duration="1000">
+    programsContainer.innerHTML += ` <div class="col-12 mb-4 col-md-6 col-lg-4 data-aos="fade-up" data-aos-duration="1000">
         <div class="card">
           <img src="https://charity-house.zezogomaa.repl.co/${
             program.imgPath

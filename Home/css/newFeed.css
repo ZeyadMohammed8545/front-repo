@@ -5,6 +5,11 @@
   margin: 0 auto !important;
   background-color: #ddd;
 }
+@media (max-width: 767px) {
+    .feed-form {
+      width: 95%;
+    }
+}
 
 .form-input {
   background-color: #fff;

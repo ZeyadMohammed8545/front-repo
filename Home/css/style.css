@@ -26,7 +26,11 @@ html::-webkit-scrollbar-thumb:hover {
 body{
     direction: rtl;
     font-family: 'Tajawal', sans-serif;
-    overflow-x: hidden;
+    overflow-x: hidden !important;
+}
+.body {
+    width: 100vw !important;
+    overflow-x: hidden !important;
 }
 
 a{
@@ -164,10 +168,11 @@ color: #fff
 
 .caru_slide .carousel-inner .carousel-item .carousel-caption{
     position: absolute;
-    width: 40%;
-    bottom: 50%;
-    transform: translateY(50%);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
 }
+.carousel-caption h4{ font-size: 25px;  }
 /* end carousel */
 
 /* start project */
@@ -839,13 +844,13 @@ input:focus-visible {
         align-items: center;
         font-family: "Monoton", cursive;
         background: linear-gradient(-90deg, #49a4ed 30%, #3d00a9 110%);
-        -webkit-background-clip: text;
+        /* -webkit-background-clip: text; */
         -webkit-text-fill-color: transparent;
         }
         .offcanvas-menu nav > div a i {
         font-size: 4rem;
         background: linear-gradient(120deg, #49a4ed 30%, #3d00a9 110%);
-        -webkit-background-clip: text;
+        /* -webkit-background-clip: text; */
         -webkit-text-fill-color: transparent;
         }
         .offcanvas-menu nav > div label {

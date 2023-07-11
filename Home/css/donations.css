@@ -1,0 +1,36 @@
+.app-container {
+  padding: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+.donation-card {
+  width: 49%;
+  padding: 20px;
+  background-color: #acacac;
+  border-radius: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.card-section {
+  width: 100%;
+  padding: 20px;
+}
+.card-section:not(:last-child) {
+  border-bottom: 1px solid #eee;
+}
+.section-heading {
+  text-align: center;
+}
+.info-item {
+  font-size: 19px;
+  font-weight: 500;
+}
+
+@media (max-width: 767px) {
+  .donation-card {
+    width: 100%;
+  }
+}

@@ -4,7 +4,11 @@
   margin: 0 auto !important;
   background-color: #ddd;
 }
-
+@media (max-width: 768px) {
+  .contact-form {
+    width: 95% !important;
+  }
+}
 .form-input {
   background-color: #fff;
   margin-bottom: 15px;
