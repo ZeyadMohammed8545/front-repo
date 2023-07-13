@@ -13,3 +13,6 @@ input.invalid::placeholder {
   background-color: #ddd !important;
   color: #606060 !important;
 }
+.target-image {
+  height: 400px;
+}

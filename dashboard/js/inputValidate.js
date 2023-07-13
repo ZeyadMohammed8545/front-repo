@@ -28,11 +28,11 @@ const validatePassword = (input) => {
 };
 
 const validateConfPass = (input, password) => {
-  if (input == password) return true;
+  if (input.trim() == password.trim()) return true;
   else return false;
 };
 
 const validateInput = (input, validateMethod) => {
-  const result = validateMethod(input);
+  const result = validateMethod(input.trim());
   return result;
 };

@@ -43,8 +43,8 @@ const writeAdminsData = async (adminsData) => {
     adminCardContainer.innerHTML += `  <div class="col-12 col-md-6 col-lg-4 col-xl-4 mb-3">
             <div class="card" style="width: 25rem">
               <img
-                class="card-img-top"
-                src="https://charity-house.zezogomaa.repl.co/${admin.imgPath}" 
+                class="card-img-top target-image"
+                src="https://charity-house.zezogomaa.repl.co/${admin.imgPath}"  
                 alt="Card image cap"
               />
               <div class="card-body">
@@ -213,7 +213,7 @@ async function App() {
       // submitHandler(token);
       const formData = getFormData();
       const response = await addAdmin(formData, token);
-      console.log(response);
+      location.reload();
     } else {
       swal({
         title: "Invalid Inputs",

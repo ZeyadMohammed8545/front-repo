@@ -140,6 +140,7 @@ submitForm.addEventListener("submit", (ev) => {
         method: "POST",
         body: formData,
         headers: {
+          "Content-Type": "multipart/form-data",
           Authorized: `Bearer ${token}`,
         },
       })
