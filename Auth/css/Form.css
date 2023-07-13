@@ -257,6 +257,11 @@ body {
   transform: translateX(-50%);
 }
 
+input.invalid {
+  border: 1px solid red;
+  background-color: rgba(255, 0, 0, 0.479) !important;
+  color: #111;
+}
 
 @keyframes show {
   0%,

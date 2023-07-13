@@ -23,12 +23,16 @@
       <form action="/sign-up" method="post" class="form" id="form1">
         <h2 class="form__title">Sign Up</h2>
         <h2 class="feed-status signup-status">some success or err Text</h2>
-        <input type="text" placeholder="User" class="input signUpName" />
-        <input type="email" placeholder="Email" class="input signUpEmail" />
-        <input type="Test" placeholder="Address" class="input signUpAddress" />
-        <input type="number" placeholder="PhoneNumber" class="input signUpNumber" />
-        <input type="password" placeholder="Password" class="input signUpPassword" />
-        <input type="password" placeholder="Confirm Password" class="input signUpConfPassword" />
+        <input type="text" placeholder="User" class="input signUpName" oninput="nameChangeHandler(this.value)" />
+        <input type="email" placeholder="Email" class="input signUpEmail" oninput="emailChangeHandler(this.value)" />
+        <input type="text" placeholder="Address" class="input signUpAddress"
+          oninput="addressChangeHandler(this.value)" />
+        <input type="number" placeholder="PhoneNumber" class="input signUpNumber"
+          oninput="phoneChangeHandler(this.value)" />
+        <input type="password" placeholder="Password" class="input signUpPassword"
+          oninput="passwordChangeHandler(this.value)" />
+        <input type="password" placeholder="Confirm Password" class="input signUpConfPassword"
+          oninput="confPassChangeHandler(this.value)" />
         <button class="btn sign-up-submit" type="submit">Sign Up</button>
       </form>
     </div>
@@ -38,8 +42,10 @@
       <form action="/sign-in" method="post" class="form" id="form2">
         <h2 class="form__title">Sign In</h2>
         <h2 class="feed-status login-status">Some error Text</h2>
-        <input type="email" placeholder="Email" class="input loginEmail" name="loginEmail" />
-        <input type="password" placeholder="Password" class="input loginPass" name="loginPass" />
+        <input type="email" placeholder="Email" class="input loginEmail" name="loginEmail"
+          oninput="loginEmailChange(this.value)" />
+        <input type="password" placeholder="Password" class="input loginPass" name="loginPass"
+          oninput="loginPassChange(this.value)" />
         <a href="./forget.html" class="link">Forgot your password?</a>
         <button class="btn sign-in-submit" type="submit">Login</button>
       </form>
@@ -57,6 +63,8 @@
       </div>
     </div>
   </div>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <script src="./js/validate.js"></script>
   <script src="js/Form.js"></script>
 </body>
 
