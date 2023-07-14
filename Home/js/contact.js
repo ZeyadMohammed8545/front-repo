@@ -25,7 +25,6 @@ const clearInput = () => {
   message.value = "";
 };
 
-const userData = JSON.parse(window.localStorage.getItem("loginUserToken"));
 const { userId, token } = userData;
 contactSubmit.addEventListener("click", async (ev) => {
   ev.preventDefault();

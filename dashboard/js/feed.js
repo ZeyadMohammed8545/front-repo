@@ -29,53 +29,58 @@ fetch("https://charity-house.zezogomaa.repl.co/feed", {
     return response.json();
   })
   .then((feeds) => {
-    feeds.feeds.forEach((el) => {
-      feedContainer.innerHTML += ` <div class="feed-card overview bg-white rad-10 d-flex align-center">
-        <div class="avatar-box txt-c p-20">
-          <img class="rad-half mb-10" src="imgs/avatar.png" alt="" />
-          <h3 class="m-0">${el.user.name} </h3>
-          <p class="c-grey mt-10">${el.user.email}</p>
-        </div>
-        <div class="info-box w-full txt-c-mobile">
-          <!-- Start Information Row -->
-          <div class="box p-20 d-flex align-center">
-            <h4 class="c-grey fs-15 m-0 w-full">General Information</h4>
-            <div class="fs-14">
-              <span class="c-grey">Full Name</span>
-              <span> ${el.user.name}</span>
-            </div>
-            <div class="fs-14">
-              <span class="c-grey">Subject</span>
-              <span>${el.subject}</span>
-            </div>
+    console.log(feeds);
+    if (feeds.feeds.length > 0) {
+      feeds.feeds.forEach((el) => {
+        feedContainer.innerHTML += ` <div class="feed-card overview bg-white rad-10 d-flex align-center">
+          <div class="avatar-box txt-c p-20">
+            <img class="rad-half mb-10" src="imgs/avatar.png" alt="" />
+            <h3 class="m-0">${el.user.name} </h3>
+            <p class="c-grey mt-10">${el.user.email}</p>
           </div>
-          <!-- End Information Row -->
-          <!-- Start Information Row -->
-          <div class="box p-20 d-flex align-center">
-            <h4 class="c-grey w-full fs-15 m-0">Personal Information</h4>
-            <div class="fs-14">
-              <span class="c-grey">Email:</span>
-              <span>${el.user.email}</span>
+          <div class="info-box w-full txt-c-mobile">
+            <!-- Start Information Row -->
+            <div class="box p-20 d-flex align-center">
+              <h4 class="c-grey fs-15 m-0 w-full">General Information</h4>
+              <div class="fs-14">
+                <span class="c-grey">Full Name</span>
+                <span> ${el.user.name}</span>
+              </div>
+              <div class="fs-14">
+                <span class="c-grey">Subject</span>
+                <span>${el.subject}</span>
+              </div>
             </div>
-            <div class="fs-14">
-              <span class="c-grey">Post Date</span>
-              <span>${DateHandler(el.id)}</span>
+            <!-- End Information Row -->
+            <!-- Start Information Row -->
+            <div class="box p-20 d-flex align-center">
+              <h4 class="c-grey w-full fs-15 m-0">Personal Information</h4>
+              <div class="fs-14">
+                <span class="c-grey">Email:</span>
+                <span>${el.user.email}</span>
+              </div>
+              <div class="fs-14">
+                <span class="c-grey">Post Date</span>
+                <span>${DateHandler(el.id)}</span>
+              </div>
             </div>
+            <!-- End Information Row -->
+  
+            <!-- Start Information Row -->
+            <div class="box p-20 d-flex align-center">
+              <h4 class="c-grey w-full fs-15 m-2">Feedback</h4>
+              <h5>${el.message}</h5>
+              <div class="btn-holder"><button class = "delete-btn" onclick ="deleteClickHandler(${
+                el.id
+              })" >Delete</button></div>
+            </div>
+            <!-- End Information Row -->
           </div>
-          <!-- End Information Row -->
-
-          <!-- Start Information Row -->
-          <div class="box p-20 d-flex align-center">
-            <h4 class="c-grey w-full fs-15 m-2">Feedback</h4>
-            <h5>${el.message}</h5>
-            <div class="btn-holder"><button class = "delete-btn" onclick ="deleteClickHandler(${
-              el.id
-            })" >Delete</button></div>
-          </div>
-          <!-- End Information Row -->
-        </div>
-      </div>`;
-    });
+        </div>`;
+      });
+    } else {
+      feedContainer.innerHTML  = "<p class = 'err-txt'>No Feed Found</p>";
+    }
   })
   .catch((err) => {
     console.log(err);

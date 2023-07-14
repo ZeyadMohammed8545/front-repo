@@ -79,23 +79,36 @@ const writeOrders = async (token) => {
   const { orders } = ordersData;
   console.log(orders);
   tableBody.innerHTML = "";
-  orders.forEach((order, ind) => {
-    tableBody.innerHTML += ` 
-    <tr>
-        <th scope="row">${ind + 1}</th>
-        <td class = "status-cell-${ind}">${order.status}</td>
-        <td>${order.transactionId}</td>
-        <td>${order.price}</td>
-        <td>${order.orderId}</td>
-        <td>${order.user.name}</td>
-        <td>${order.program.title}</td>
-        <td class=actions-cell>
-            ${order.status == "pending" ? `<button type="button" class="btn btn-success mark-btn" onclick = "markDownHandler('${encodeURIComponent(order._id)}', '${encodeURIComponent(token)}', '${ind}')">Mark as done</button>`: ``}
-            <a href = "./order.html?orderId=${order._id}" class="btn btn-primary">Discover<a/>
-        </td>
-    </tr>`;
-  });
-
+  if (orders.length > 0) {
+    orders.forEach((order, ind) => {
+      tableBody.innerHTML += ` 
+      <tr>
+          <th scope="row">${ind + 1}</th>
+          <td class = "status-cell-${ind}">${order.status}</td>
+          <td>${order.transactionId}</td>
+          <td>${order.price}</td>
+          <td>${order.orderId}</td>
+          <td>${order.user.name}</td>
+          <td>${order.program.title}</td>
+          <td class=actions-cell>
+              ${
+                order.status == "pending"
+                  ? `<button type="button" class="btn btn-success mark-btn" onclick = "markDownHandler('${encodeURIComponent(
+                      order._id
+                    )}', '${encodeURIComponent(
+                      token
+                    )}', '${ind}')">Mark as done</button>`
+                  : ``
+              }
+              <a href = "./order.html?orderId=${
+                order._id
+              }" class="btn btn-primary">Discover<a/>
+          </td>
+      </tr>`;
+    });
+  } else {
+    tableBody.innerHTML = "<p class = 'err-txt'>No Users Found</p>";
+  }
   markBtns = document.querySelectorAll(".mark-btn");
 };
 

@@ -48,8 +48,9 @@ fetch("https://charity-house.zezogomaa.repl.co/news")
     return news.json();
   })
   .then((data) => {
-    data.news.forEach((el) => {
-      newsContainer.innerHTML += `  <div class="col-12 mb-4">
+    if (data.news.length > 0) {
+      data.news.forEach((el) => {
+        newsContainer.innerHTML += `  <div class="col-12 mb-4">
               <div class="card d-flex flex-row">
                 <img
                   class="card-img-top"
@@ -88,7 +89,10 @@ fetch("https://charity-house.zezogomaa.repl.co/news")
                 </div>
               </div>
             </div>`;
-    });
+      });
+    } else {
+      newsContainer.innerHTML = "<p class = 'err-txt'>No Users Found</p>";
+    }
   });
 
 const newsDeleteHandler = async (id) => {

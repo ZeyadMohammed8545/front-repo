@@ -28,33 +28,36 @@ fetch("https://charity-house.zezogomaa.repl.co/programs")
     return result.json();
   })
   .then((data) => {
-    data.programs.forEach((el) => {
-      cardsParent.innerHTML += ` <div class="col-md-6">
-                <div class="program-card d-flex flex-column">
-                  <h2 class="">${el.title}</h2>
-                  <p class="">${el.description}</p>
-                  <p>${el.price}</p>
-                  <img src="https://charity-house.zezogomaa.repl.co/${el.imgPath}" alt="not Available" />
-                  <div class="buttons">
-                    <input
-                      type="button"
-                      value="Delete"
-                      class="btn btn-danger delete-btn"
-                      onclick = "deleteHandler(${el.id})"
-                    />
-                    
-                    <a href = "#programs-form"><input
-                      type="button"
-                      value="Edit"
-                      class="btn btn-primary"
-                      onclick = "editHandler(${el.id})"
-                    /></a>
+    if (data.programs.length > 0) {
+      data.programs.forEach((el) => {
+        cardsParent.innerHTML += ` <div class="col-md-6">
+                  <div class="program-card d-flex flex-column">
+                    <h2 class="">${el.title}</h2>
+                    <p class="">${el.description}</p>
+                    <p>${el.price}</p>
+                    <img src="https://charity-house.zezogomaa.repl.co/${el.imgPath}" alt="not Available" />
+                    <div class="buttons">
+                      <input
+                        type="button"
+                        value="Delete"
+                        class="btn btn-danger delete-btn"
+                        onclick = "deleteHandler(${el.id})"
+                      />
+                      
+                      <a href = "#programs-form"><input
+                        type="button"
+                        value="Edit"
+                        class="btn btn-primary"
+                        onclick = "editHandler(${el.id})"
+                      /></a>
+                    </div>
                   </div>
-                </div>
-              </div>`;
-    });
+                </div>`;
+      });
+    } else {
+      cardsParent.innerHTML = "<p class = 'err-txt'>No Users Found</p>";
+    }
   })
-  .then(() => {})
   .catch((err) => {
     console.log(err);
   });
@@ -109,13 +112,14 @@ function editHandler(prod_id) {
       return program.json();
     })
     .then((programData) => {
-      titleInput.value = programData.program[0].title;
-      priceInput.value = programData.program[0].price;
-      descriptionInput.value = programData.program[0].description;
+      console.log(programData);
+      titleInput.value = programData.program.title;
+      priceInput.value = programData.program.price;
+      descriptionInput.value = programData.program.description;
       document.querySelector(".hidden-path").value =
-        programData.program[0].imgPath;
-      formImage.src = `https://charity-house.zezogomaa.repl.co/${programData.program[0].imgPath}`;
-      document.querySelector(".hidden_id").value = programData.program[0]._id;
+        programData.program.imgPath;
+      formImage.src = `https://charity-house.zezogomaa.repl.co/${programData.program.imgPath}`;
+      document.querySelector(".hidden_id").value = programData.program._id;
     });
 }
 

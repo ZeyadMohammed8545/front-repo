@@ -39,31 +39,36 @@ const getAdminsData = async (token) => {
 };
 
 const writeAdminsData = async (adminsData) => {
-  adminsData.admins.forEach((admin) => {
-    adminCardContainer.innerHTML += `  <div class="col-12 col-md-6 col-lg-4 col-xl-4 mb-3">
-            <div class="card" style="width: 25rem">
-              <img
-                class="card-img-top target-image"
-                src="https://charity-house.zezogomaa.repl.co/${admin.imgPath}"  
-                alt="Card image cap"
-              />
-              <div class="card-body">
-                <h5 class="card-title mt-4 mb-4">
-                  FullName:-
-                  <span class="text-secondary h5"> ${admin.name}</span>
-                </h5>
-                <hr />
-                <h5 class="card-title mt-4 mb-4">
-                  Email:-<span class="text-secondary h5">
-                    ${admin.email}
-                  </span>
-                </h5>
-                <hr />
-               
-              </div>
-              </div>
-              </div>`;
-  });
+  console.log(adminsData);
+  if (adminsData.admins.length > 0) {
+    adminsData.admins.forEach((admin) => {
+      adminCardContainer.innerHTML += `  <div class="col-12 col-md-6 col-lg-4 col-xl-4 mb-3">
+              <div class="card" style="width: 25rem">
+                <img
+                  class="card-img-top target-image"
+                  src="https://charity-house.zezogomaa.repl.co/${admin.imgPath}"  
+                  alt="Card image cap"
+                />
+                <div class="card-body">
+                  <h5 class="card-title mt-4 mb-4">
+                    FullName:-
+                    <span class="text-secondary h5"> ${admin.name}</span>
+                  </h5>
+                  <hr />
+                  <h5 class="card-title mt-4 mb-4">
+                    Email:-<span class="text-secondary h5">
+                      ${admin.email}
+                    </span>
+                  </h5>
+                  <hr />
+                 
+                </div>
+                </div>
+                </div>`;
+    });
+  } else {
+    adminCardContainer.innerHTML = "<p class = 'err-txt'>No Users Found</p>";
+  }
 };
 
 const getFormValues = () => {
@@ -106,7 +111,7 @@ const addAdmin = async (formData, token) => {
 };
 
 const clearInput = () => {
-  nameInput.value = "";
+  userNameInput.value = "";
   emailInput.value = "";
   phoneInput.value = "";
   addressInput.value = "";
@@ -213,6 +218,7 @@ async function App() {
       // submitHandler(token);
       const formData = getFormData();
       const response = await addAdmin(formData, token);
+      clearInput();
       location.reload();
     } else {
       swal({

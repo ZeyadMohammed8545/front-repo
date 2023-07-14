@@ -44,8 +44,10 @@ fetch("https://charity-house.zezogomaa.repl.co/contacts", {
             <div class="box p-20 d-flex align-center">
               <h4 class="c-grey fs-15 m-0 w-full">General Information</h4>
               <div class="fs-14">
-                <span class="c-grey">Name</span>
+                <span class="c-grey">Name:</span>
                 <span>${request.user.name}</span>
+                <span class="c-grey">Phone: </span>
+                <span>${request.user.phone}</span>
               </div>
             </div>
             <!-- End Information Row -->

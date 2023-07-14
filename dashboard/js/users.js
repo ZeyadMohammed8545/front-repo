@@ -16,59 +16,63 @@ fetch("https://charity-house.zezogomaa.repl.co/get-users", {
   })
   .then((data) => {
     // console.log(data.users);
-    data.users.forEach((user) => {
-      usersContainer.innerHTML += ` <div class="overview bg-white rad-10 d-flex align-center user-card mb-2">
-            <div class="avatar-box txt-c p-20">
-              <img class="rad-half mb-10" src="${
-                user.imgPath
-                  ? `https://charity-house.zezogomaa.repl.co/${user.imgPath}`
-                  : "imgs/avatar.png"
-              }" alt="" />
-              <h3 class="m-0">${user.name}</h3>
-              <p class="c-grey mt-10">${user.email}</p>
-            </div>
-            <div class="info-box w-full txt-c-mobile">
-              <!-- Start Information Row -->
-              <div class="box p-20 d-flex align-center">
-                <h4 class="c-grey fs-15 m-0 w-full">General Information</h4>
-                <div class="fs-14">
-                  <span class="c-grey">Full Name</span>
-                  <span>${user.name}</span>
-                </div>
-                <div class="fs-14">
-                  <span class="c-grey">Country:</span>
-                  <span>Egypt</span>
-                </div>
+    if (data.users.length > 0) {
+      data.users.forEach((user) => {
+        usersContainer.innerHTML += ` <div class="overview bg-white rad-10 d-flex align-center user-card mb-2">
+              <div class="avatar-box txt-c p-20">
+                <img class="rad-half mb-10" src="${
+                  user.imgPath
+                    ? `https://charity-house.zezogomaa.repl.co/${user.imgPath}`
+                    : "imgs/avatar.png"
+                }" alt="" />
+                <h3 class="m-0">${user.name}</h3>
+                <p class="c-grey mt-10">${user.email}</p>
               </div>
-              <!-- End Information Row -->
-              <!-- Start Information Row -->
-              <div class="box p-20 d-flex align-center">
-                <h4 class="c-grey w-full fs-15 m-0">Personal Information</h4>
-                <div class="fs-14">
-                  <span class="c-grey">Email:</span>
-                  <span>${user.email}</span>
+              <div class="info-box w-full txt-c-mobile">
+                <!-- Start Information Row -->
+                <div class="box p-20 d-flex align-center">
+                  <h4 class="c-grey fs-15 m-0 w-full">General Information</h4>
+                  <div class="fs-14">
+                    <span class="c-grey">Full Name</span>
+                    <span>${user.name}</span>
+                  </div>
+                  <div class="fs-14">
+                    <span class="c-grey">Country:</span>
+                    <span>Egypt</span>
+                  </div>
                 </div>
-                <div class="fs-14">
-                  <span class="c-grey">Phone:</span>
-                  <span>${user.phone}</span>
+                <!-- End Information Row -->
+                <!-- Start Information Row -->
+                <div class="box p-20 d-flex align-center">
+                  <h4 class="c-grey w-full fs-15 m-0">Personal Information</h4>
+                  <div class="fs-14">
+                    <span class="c-grey">Email:</span>
+                    <span>${user.email}</span>
+                  </div>
+                  <div class="fs-14">
+                    <span class="c-grey">Phone:</span>
+                    <span>${user.phone}</span>
+                  </div>
+                  <div class="fs-14">
+                    <span class="c-grey">Addrress:</span>
+                    <span>${user.address}</span>
+                  </div>
                 </div>
-                <div class="fs-14">
-                  <span class="c-grey">Addrress:</span>
-                  <span>${user.address}</span>
+                <!-- End Information Row -->
+  
+                <!-- Start Information Row -->
+                <div class="buttonsUsers p-20 d-flex align-center">
+                  <input type="button" value="Delete" class="btn btn-primary" onclick = "userDeleteHandler(${
+                    user.id
+                  })"/>
                 </div>
+                <!-- End Information Row -->
               </div>
-              <!-- End Information Row -->
-
-              <!-- Start Information Row -->
-              <div class="buttonsUsers p-20 d-flex align-center">
-                <input type="button" value="Delete" class="btn btn-primary" onclick = "userDeleteHandler(${
-                  user.id
-                })"/>
-              </div>
-              <!-- End Information Row -->
-            </div>
-          </div>`;
-    });
+            </div>`;
+      });
+    } else {
+      usersContainer.innerHTML = "<p class = 'err-txt'>No Users Found</p>";
+    }
   });
 
 const userDeleteHandler = async (id) => {
